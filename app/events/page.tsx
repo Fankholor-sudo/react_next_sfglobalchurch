@@ -36,7 +36,7 @@ const upcomingEvents = [
   },
   {
     id: 2, title: 'Healing & Miracles Service', day: '07', month: 'SEP',
-    date: 'September 7, 2025', time: '10:00 AM – 2:00 PM', location: 'Main Sanctuary',
+    date: 'September 7, 2025', time: '10:00 AM – 2:00 PM', location: 'SFGC Auditorium',
     category: 'Special Service', description: 'Come expecting a supernatural encounter. Miracles, signs, and wonders.',
   },
   {
