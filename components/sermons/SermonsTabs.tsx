@@ -18,15 +18,15 @@ import MicIcon from '@mui/icons-material/Mic'
 import SectionTitle from '../SectionTitle'
 
 const allSermons = [
-  { id: 1, title: 'Walking in Your Divine Dominion', speaker: 'Senior Pastor', date: 'July 20, 2025', category: 'Dominion', series: 'Dominion Series', duration: '54 min' },
-  { id: 2, title: 'The Spirit of a Champion', speaker: 'Senior Pastor', date: 'July 13, 2025', category: 'Identity', series: 'Who You Are', duration: '48 min' },
-  { id: 3, title: 'Positioned for Purpose', speaker: 'Guest Minister', date: 'July 6, 2025', category: 'Purpose', series: 'Kingdom Living', duration: '61 min' },
-  { id: 4, title: 'Faith That Moves Mountains', speaker: 'Senior Pastor', date: 'June 29, 2025', category: 'Faith', series: 'Faith Series', duration: '52 min' },
-  { id: 5, title: 'The Power of Prayer', speaker: 'Co-Pastor', date: 'June 22, 2025', category: 'Prayer', series: 'Prayer School', duration: '45 min' },
-  { id: 6, title: 'Abundance & Overflow', speaker: 'Senior Pastor', date: 'June 15, 2025', category: 'Provision', series: 'Kingdom Finances', duration: '57 min' },
-  { id: 7, title: 'Healing is Your Heritage', speaker: 'Guest Minister', date: 'June 8, 2025', category: 'Healing', series: 'Miracles', duration: '63 min' },
-  { id: 8, title: 'The Fear of the Lord', speaker: 'Senior Pastor', date: 'June 1, 2025', category: 'Wisdom', series: 'Wisdom Series', duration: '50 min' },
-  { id: 9, title: 'Raising Godly Children', speaker: 'Co-Pastor', date: 'May 25, 2025', category: 'Family', series: 'Family Matters', duration: '44 min' },
+  { id: 1, title: 'Walking in Your Divine Dominion', speaker: 'Pastor Mnisi', date: 'July 20, 2025', category: 'Dominion', series: 'Dominion Series', duration: '54 min' },
+  { id: 2, title: 'The Spirit of a Champion', speaker: 'Pastor Joshua Vincent', date: 'July 13, 2025', category: 'Identity', series: 'Who You Are', duration: '48 min' },
+  { id: 3, title: 'Positioned for Purpose', speaker: 'Pastor Makhubela', date: 'July 6, 2025', category: 'Purpose', series: 'Kingdom Living', duration: '61 min' },
+  { id: 4, title: 'Faith That Moves Mountains', speaker: 'Pastor Mnisi', date: 'June 29, 2025', category: 'Faith', series: 'Faith Series', duration: '52 min' },
+  { id: 5, title: 'The Power of Prayer', speaker: 'Pastor James Mqadi', date: 'June 22, 2025', category: 'Prayer', series: 'Prayer School', duration: '45 min' },
+  { id: 6, title: 'Abundance & Overflow', speaker: 'Pastor Joshua Vincent', date: 'June 15, 2025', category: 'Provision', series: 'Kingdom Finances', duration: '57 min' },
+  { id: 7, title: 'Healing is Your Heritage', speaker: 'Pastor Makhubela', date: 'June 8, 2025', category: 'Healing', series: 'Miracles', duration: '63 min' },
+  { id: 8, title: 'The Fear of the Lord', speaker: 'Pastor James Mqadi', date: 'June 1, 2025', category: 'Wisdom', series: 'Wisdom Series', duration: '50 min' },
+  { id: 9, title: 'Raising Godly Children', speaker: 'Pastor Mnisi', date: 'May 25, 2025', category: 'Family', series: 'Family Matters', duration: '44 min' },
 ]
 
 const categories = ['All', 'Dominion', 'Identity', 'Purpose', 'Faith', 'Prayer', 'Provision', 'Healing', 'Family']
@@ -98,7 +98,7 @@ export default function SermonsTabs() {
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
               <MicIcon sx={{ fontSize: 16, color: '#C9A84C' }} />
               <Typography variant="body2" color="text.secondary">
-                Senior Pastor &bull; July 20, 2025 &bull; 54 min
+                Pastor Joshua Vincent &bull; July 20, 2025 &bull; 54 min
               </Typography>
             </Box>
             <Typography variant="body1" color="text.secondary" sx={{ mb: 3, lineHeight: 1.8 }}>

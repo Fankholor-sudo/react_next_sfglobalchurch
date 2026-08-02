@@ -18,7 +18,7 @@ const sermons = [
   {
     id: 1,
     title: 'Walking in Your Divine Dominion',
-    speaker: 'Senior Pastor',
+    speaker: 'Pastor Joshua Vincent',
     date: 'July 20, 2025',
     category: 'Dominion',
     image: '/images/sermon-thumb.png',
@@ -27,7 +27,7 @@ const sermons = [
   {
     id: 2,
     title: 'The Spirit of a Champion',
-    speaker: 'Senior Pastor',
+    speaker: 'Pastor Makhubela',
     date: 'July 13, 2025',
     category: 'Identity',
     image: '/images/sermon-thumb.png',
@@ -36,7 +36,7 @@ const sermons = [
   {
     id: 3,
     title: 'Positioned for Purpose',
-    speaker: 'Guest Minister',
+    speaker: 'Pastor Mnisi',
     date: 'July 6, 2025',
     category: 'Purpose',
     image: '/images/sermon-thumb.png',

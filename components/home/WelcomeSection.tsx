@@ -1,7 +1,5 @@
 'use client'
 
-'use client'
-
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
@@ -55,7 +53,7 @@ export default function WelcomeSection() {
               align="left"
             />
             <Typography variant="body1" color="text.secondary" sx={{ mb: 3, lineHeight: 1.9 }}>
-              Spirit Fountain Global Church is a vibrant, Spirit-filled church committed to raising champions for God. We believe every person is created with divine purpose — to dominate their sphere and take over their world for Christ.
+              Spirit Fountain Global Church is a vibrant, Spirit-filled church committed to raising champions for God. We believe every person is created with divine purpose to dominate their sphere and take over their world for Christ.
             </Typography>
             <Typography variant="body1" color="text.secondary" sx={{ mb: 4, lineHeight: 1.9 }}>
               Whether you are new to faith or have walked with God for years, you will find a home among us. Join us as we worship, grow, and impact our community together.
