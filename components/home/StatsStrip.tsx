@@ -5,8 +5,7 @@ import Typography from '@mui/material/Typography'
 
 const stats = [
   { value: '5+', label: 'Years of Ministry' },
-  { value: '500+', label: 'Members & Growing' },
-  { value: '10+', label: 'Community Programs' },
+  { value: '200+', label: 'Members & Growing' },
   { value: '2', label: 'Ministries & Departments' },
 ]
 

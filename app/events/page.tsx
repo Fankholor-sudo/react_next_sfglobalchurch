@@ -21,17 +21,17 @@ const featuredEvent = {
   title: 'Kingdom Dominion Conference 2025',
   dates: 'August 2–4, 2025',
   time: '9:00 AM – 9:00 PM Daily',
-  location: 'Spirit Fountain Global Church Main Sanctuary, 123 Kingdom Avenue, Pretoria',
+  location: 'SFGC Auditorium, 1025 Park Street, Hatfield, Pretoria, Gauteng, 0083',
   category: 'Annual Conference',
   description:
-    'Join us for our flagship annual conference — three days of intense worship, powerful preaching, and divine encounters. Speakers from across Africa and beyond will minister as we together press into our Kingdom mandate. This is the event of the year. Do not miss it.',
+    'Join us for our flagship annual conference three days of intense worship, powerful preaching, and divine encounters. Speakers from across Africa and beyond will minister as we together press into our Kingdom mandate. This is the event of the year. Do not miss it.',
   speakers: ['Senior Pastor John Doe', 'Guest Minister A', 'Guest Minister B'],
 }
 
 const upcomingEvents = [
   {
     id: 1, title: 'Young Adults Night of Worship', day: '16', month: 'AUG',
-    date: 'August 16, 2025', time: '7:00 PM – 11:00 PM', location: 'Main Hall',
+    date: 'August 16, 2025', time: '7:00 PM – 11:00 PM', location: 'SFGC Auditorium',
     category: 'Youth', description: 'An unforgettable night of praise and worship for young adults aged 18–35.',
   },
   {
@@ -41,22 +41,22 @@ const upcomingEvents = [
   },
   {
     id: 3, title: 'Women\'s Empowerment Breakfast', day: '20', month: 'SEP',
-    date: 'September 20, 2025', time: '8:00 AM – 12:00 PM', location: 'Conference Room A',
+    date: 'September 20, 2025', time: '8:00 AM – 12:00 PM', location: 'SFGC Auditorium',
     category: 'Women\'s Ministry', description: 'Equipping women to lead with wisdom, faith, and excellence in every sphere.',
   },
   {
     id: 4, title: 'Men\'s Breakfast & Leadership Forum', day: '04', month: 'OCT',
-    date: 'October 4, 2025', time: '7:00 AM – 10:00 AM', location: 'Fellowship Hall',
+    date: 'October 4, 2025', time: '7:00 AM – 10:00 AM', location: 'SFGC Auditorium',
     category: 'Men\'s Ministry', description: 'Strengthening men to be godly leaders in their homes, workplaces, and communities.',
   },
   {
     id: 5, title: 'Night of Praise & Thanksgiving', day: '26', month: 'OCT',
-    date: 'October 26, 2025', time: '6:30 PM – 10:00 PM', location: 'Main Sanctuary',
+    date: 'October 26, 2025', time: '6:30 PM – 10:00 PM', location: 'SFGC Auditorium',
     category: 'Worship Night', description: 'An evening dedicated entirely to praise and thanksgiving as we reflect on God\'s goodness.',
   },
   {
     id: 6, title: 'End of Year Celebration Service', day: '28', month: 'DEC',
-    date: 'December 28, 2025', time: '10:00 AM – 2:00 PM', location: 'Main Sanctuary',
+    date: 'December 28, 2025', time: '10:00 AM – 2:00 PM', location: 'SFGC Auditorium',
     category: 'Celebration', description: 'Close out the year with gratitude, testimonies, and expectation for what God will do next.',
   },
 ]

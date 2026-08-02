@@ -142,9 +142,9 @@ export default function HeroSection() {
               }}
             >
               {[
-                { label: 'Sunday Service', time: '9:00 AM & 11:00 AM' },
-                { label: 'Wednesday', time: 'Bible Study 6:30 PM' },
-                { label: 'Friday', time: 'Prayer Night 7:00 PM' },
+                { label: 'Sunday Service', time: '10:00' },
+                { label: 'Friday', time: 'Prayer Night 18:00 PM' },
+                { label: 'Monday', time: 'Midnight Hour Prayer 00:00 AM' },
               ].map((s) => (
                 <Box key={s.label}>
                   <Typography

@@ -19,24 +19,25 @@ import FacebookIcon from '@mui/icons-material/Facebook'
 import YouTubeIcon from '@mui/icons-material/YouTube'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import IconButton from '@mui/material/IconButton'
+import { TikTokIcon } from '@/components/utils'
 
 const serviceTimes = [
-  { label: 'Sunday Service', time: '9:00 AM & 11:00 AM' },
-  { label: 'Wednesday Bible Study', time: '6:30 PM' },
-  { label: 'Friday Prayer Night', time: '7:00 PM' },
-  { label: 'Saturday Youth Service', time: '3:00 PM' },
+  { label: 'Sunday Service', time: '10:00 AM' },
+  { label: 'Friday Prayer Night', time: '18:00 PM' },
+  { label: 'Monday Midnight Hour Prayer', time: '00:00 AM' },
 ]
 
 const contactDetails = [
-  { icon: <LocationOnIcon />, label: 'Address', value: '123 Kingdom Avenue, Pretoria, Gauteng, 0001, South Africa' },
-  { icon: <PhoneIcon />, label: 'Phone', value: '+27 12 345 6789' },
+  { icon: <LocationOnIcon />, label: 'Address', value: '1025 Park Street, Hatfield, Pretoria, Gauteng, 0083, South Africa' },
+  { icon: <PhoneIcon />, label: 'Phone', value: '+27 78 714 1157' },
   { icon: <EmailIcon />, label: 'Email', value: 'info@spiritfountain.org' },
 ]
 
 const socialLinks = [
-  { icon: <FacebookIcon />, label: 'Facebook', href: '#' },
-  { icon: <YouTubeIcon />, label: 'YouTube', href: '#' },
-  { icon: <InstagramIcon />, label: 'Instagram', href: '#' },
+  { icon: <FacebookIcon />, label: 'Facebook', href: 'https://web.facebook.com/Spiritfountaininternational' },
+  { icon: <YouTubeIcon />, label: 'YouTube', href: 'https://www.youtube.com/@dominiontelevision-b4y' },
+  { icon: <InstagramIcon />, label: 'Instagram', href: 'https://www.instagram.com/spiritfountainint/' },
+  { icon: <TikTokIcon />, label: 'Tiktok', href: 'https://www.tiktok.com/@spiritfountainglobalchur' },
 ]
 
 export default function ConnectPage() {
@@ -196,11 +197,11 @@ export default function ConnectPage() {
             Spirit Fountain Global Church
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            123 Kingdom Avenue, Pretoria, Gauteng, 0001
+            1025 Park Street, Hatfield, Pretoria, Gauteng, 0083
           </Typography>
           <Typography
             component="a"
-            href="https://maps.google.com"
+            href="https://maps.app.goo.gl/oykscqv3vHs74Gom7"
             target="_blank"
             rel="noopener noreferrer"
             variant="body2"
