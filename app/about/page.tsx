@@ -102,7 +102,7 @@ export default function AboutPage() {
                   Raising Kingdom Champions
                 </Typography>
                 <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.9 }}>
-                  Our mission is to preach the undiluted Gospel of Jesus Christ, make disciples of all nations, and equip every believer to walk in their God-given dominion — spiritually, financially, relationally, and vocationally.
+                  Our mission is to preach the undiluted Gospel of Jesus Christ, make disciples of all nations, and equip every believer to walk in their God-given dominion spiritually, financially, relationally, and vocationally.
                 </Typography>
               </Box>
             </Grid>
@@ -141,7 +141,7 @@ export default function AboutPage() {
                   A Church Without Walls
                 </Typography>
                 <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.9 }}>
-                  To be a Spirit-filled, Word-grounded, and community-impacting church that raises leaders who dominate every sphere of society — government, business, arts, education, and family — for the advancement of God's kingdom.
+                  To be a Spirit-filled, Word-grounded, and community, impacting church that raises leaders who dominate every sphere of society, government, business, arts, education, and family for the advancement of God's kingdom.
                 </Typography>
               </Box>
             </Grid>
@@ -169,10 +169,10 @@ export default function AboutPage() {
                 Spirit Fountain Global Church was founded on a simple yet profound conviction: that God has called every believer to rise above mediocrity, walk in divine dominion, and bring heaven&apos;s reality to earth.
               </Typography>
               <Typography variant="body1" color="text.secondary" sx={{ mb: 3, lineHeight: 1.9 }}>
-                What started as a small gathering of passionate believers in a living room has grown into a thriving, multi-generational church community. Today, we are thousands strong — worshipping, learning, serving, and growing together.
+                What started as a small gathering of passionate believers in a living room has grown into a thriving, multi-generational church community. Today, we are hundreds strong, worshipping, learning, serving, and growing together.
               </Typography>
               <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.9 }}>
-                Our church is not just a building — it is a movement. A movement of people who dare to believe that they were Created to Dominate and Formed to Take Over.
+                Our church is not just a building, it is a movement. A movement of people who dare to believe that they were Created to Dominate and Formed to Take Over.
               </Typography>
             </Grid>
           </Grid>

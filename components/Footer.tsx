@@ -27,25 +27,10 @@ const quickLinks = [
 ]
 
 const serviceTimes = [
-  { day: 'Sunday Service', time: '9:00 AM & 11:00 AM' },
-  { day: 'Wednesday Bible Study', time: '6:30 PM' },
-  { day: 'Friday Prayer Night', time: '7:00 PM' },
+  { id: 'sunday', day: 'Sunday Service', time: '10:00 AM' },
+  { id: 'friday', day: 'Friday Prayer Night', time: '18:00 PM' },
+  { id: 'midnight', day: 'Monday Midnight Hour Prayer', time: '00:00 AM' },
 ]
-
-//  const TikTokIcon = ({ color = "#fff" }) => {
-//   return (
-//     <svg
-//       fill={color}
-//       xmlns="http://www.w3.org/2000/svg"
-//       viewBox="0 0 50 50"
-//       width="22px"
-//       height="22px"
-//     >
-//       <path d="M41,4H9C6.243,4,4,6.243,4,9v32c0,2.757,2.243,5,5,5h32c2.757,0,5-2.243,5-5V9C46,6.243,43.757,4,41,4z M37.006,22.323 c-0.227,0.021-0.457,0.035-0.69,0.035c-2.623,0-4.928-1.349-6.269-3.388c0,5.349,0,11.435,0,11.537c0,4.709-3.818,8.527-8.527,8.527 s-8.527-3.818-8.527-8.527s3.818-8.527,8.527-8.527c0.178,0,0.352,0.016,0.527,0.027v4.202c-0.175-0.021-0.347-0.053-0.527-0.053 c-2.404,0-4.352,1.948-4.352,4.352s1.948,4.352,4.352,4.352s4.527-1.894,4.527-4.298c0-0.095,0.042-19.594,0.042-19.594h4.016 c0.378,3.591,3.277,6.425,6.901,6.685V22.323z" />
-//     </svg>
-//   );
-// };
-
 
 const socialLinks = [
   { icon: <FacebookIcon />, label: 'Facebook', href: 'https://web.facebook.com/Spiritfountaininternational' },
@@ -191,7 +176,7 @@ export default function Footer() {
               Service Times
             </Typography>
             {serviceTimes.map((s) => (
-              <Box key={s.day} sx={{ display: 'flex', gap: 1, mb: 1.5, alignItems: 'flex-start' }}>
+              <Box key={s.id} sx={{ display: 'flex', gap: 1, mb: 1.5, alignItems: 'flex-start' }}>
                 <AccessTimeIcon sx={{ color: '#C9A84C', fontSize: 16, mt: 0.3, flexShrink: 0 }} />
                 <Box>
                   <Typography variant="body2" sx={{ color: '#FFFFFF', fontWeight: 600, fontSize: '0.8rem' }}>
@@ -222,8 +207,8 @@ export default function Footer() {
               Contact Us
             </Typography>
             {[
-              { icon: <LocationOnIcon sx={{ fontSize: 16 }} />, text: '123 Kingdom Avenue, Pretoria, Gauteng, 0001' },
-              { icon: <PhoneIcon sx={{ fontSize: 16 }} />, text: '+27 12 345 6789' },
+              { icon: <LocationOnIcon sx={{ fontSize: 16 }} />, text: '1025 Park Street, Hatfield, Pretoria, Gauteng, 0083' },
+              { icon: <PhoneIcon sx={{ fontSize: 16 }} />, text: '+27 78 714 1157' },
               { icon: <EmailIcon sx={{ fontSize: 16 }} />, text: 'info@spiritfountain.org' },
             ].map((item, i) => (
               <Box key={i} sx={{ display: 'flex', gap: 1, mb: 1.5, alignItems: 'flex-start' }}>

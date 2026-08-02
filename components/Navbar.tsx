@@ -136,15 +136,15 @@ export default function Navbar() {
                 </Button>
               )
             })}
-            <Button
+            {/* <Button
               component={Link}
               href="/give"
               variant="contained"
               color="primary"
               sx={{ ml: 2, fontWeight: 700, fontSize: '0.8rem' }}
             >
-              Give Now
-            </Button>
+              Give
+            </Button> */}
           </Box>
 
           {/* Mobile hamburger */}

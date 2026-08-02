@@ -1,4 +1,4 @@
- export const TikTokIcon = ({ color = "#fff" }) => {
+ export const TikTokIcon = ({ color = "#B0B8CC" }) => {
   return (
     <svg
       fill={color}
