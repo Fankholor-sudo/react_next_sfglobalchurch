@@ -32,10 +32,6 @@ export default function SermonsTabs({videos, loading, error}: SermonsTabProps) {
     videos.filter((s) => s.title.toLowerCase().includes(activeCategory.toLowerCase()))
   const latestSermon: YouTubeVideo = videos[0] || null
 
-  React.useEffect(() => {
-    console.log({ activeCategory })
-  }, [activeCategory])
-
   if (loading) return <div>Loading sermons...</div>
   if (error) return <div>Unable to load sermons.</div>
 
