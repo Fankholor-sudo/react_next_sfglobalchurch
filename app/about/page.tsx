@@ -38,19 +38,24 @@ const values = [
 
 const leadership = [
   {
-    name: 'Pastor John Doe',
+    name: 'Pastor Joshua Vincent',
     title: 'Senior Pastor & Founder',
-    bio: 'With over 20 years in ministry, Pastor John carries a burning mandate to raise kingdom champions. His teaching ministry has impacted thousands across Africa and beyond.',
+    bio: 'Pastor Joshua Vincent carries a burning mandate to raise kingdom champions. His teaching ministry has impacted thousands across Africa.',
   },
   {
-    name: 'Pastor Jane Doe',
-    title: 'Co-Pastor & Women\'s Ministry',
-    bio: 'A pillar of faith and wisdom, Pastor Jane leads the women\'s ministry and pastoral care team with grace, compassion, and unwavering dedication.',
+    name: 'Pastor Mnisi',
+    title: 'Co-Pastor & Teaching Pastor',
+    bio: 'Stand on what God has spoken, and believe both the Lord your God and His prophets. When faith is rooted in revelation, it will always produce results.',
   },
   {
-    name: 'Minister David Mokoena',
-    title: 'Worship Leader',
-    bio: 'David leads the Spirit Fountain worship team in ushering the congregation into the presence of God through authentic, Spirit-led worship.',
+    name: 'Pastor James Mqadi',
+    title: 'Co-Pastor & Teaching Pastor',
+    bio: 'The heavens declare it. The gates are open. And the call is clear: Enter His Rest.',
+  },
+  {
+    name: 'Pastor Makhubela',
+    title: 'Co-Pastor & Teaching Pastor',
+    bio: 'The King reigns. The Word is open, and your dominion is calling.',
   },
 ]
 
