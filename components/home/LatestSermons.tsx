@@ -13,38 +13,15 @@ import Chip from '@mui/material/Chip'
 import Link from 'next/link'
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutlined'
 import SectionTitle from '../SectionTitle'
+import { useLatestVideos } from '@/app/hooks/useLatestVideos'
 
-const sermons = [
-  {
-    id: 1,
-    title: 'Walking in Your Divine Dominion',
-    speaker: 'Pastor Joshua Vincent',
-    date: 'July 20, 2025',
-    category: 'Dominion',
-    image: '/images/sermon-thumb.png',
-    duration: '54 min',
-  },
-  {
-    id: 2,
-    title: 'The Spirit of a Champion',
-    speaker: 'Pastor Makhubela',
-    date: 'July 13, 2025',
-    category: 'Identity',
-    image: '/images/sermon-thumb.png',
-    duration: '48 min',
-  },
-  {
-    id: 3,
-    title: 'Positioned for Purpose',
-    speaker: 'Pastor Mnisi',
-    date: 'July 6, 2025',
-    category: 'Purpose',
-    image: '/images/sermon-thumb.png',
-    duration: '61 min',
-  },
-]
 
 export default function LatestSermons() {
+  const { videos, loading, error} = useLatestVideos()
+
+  if (loading) return <div>Loading sermons...</div>
+  if (error) return <div>Unable to load sermons.</div>
+  
   return (
     <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#0A0D13' }}>
       <Container maxWidth="lg">
@@ -55,7 +32,7 @@ export default function LatestSermons() {
         />
 
         <Grid container spacing={3}>
-          {sermons.map((sermon) => (
+          {videos?.slice(0,3).map((sermon) => (
             <Grid key={sermon.id} size={{ xs: 12, sm: 6, md: 4 }}>
               <Card
                 sx={{
@@ -69,11 +46,10 @@ export default function LatestSermons() {
                   <CardMedia
                     component="img"
                     height="200"
-                    image={sermon.image}
+                    image={sermon.thumbnail}
                     alt={sermon.title}
                     sx={{ objectFit: 'cover' }}
                   />
-                  {/* Play overlay */}
                   <Box
                     sx={{
                       position: 'absolute',
@@ -87,6 +63,10 @@ export default function LatestSermons() {
                       '&:hover': { opacity: 1 },
                       cursor: 'pointer',
                     }}
+                    component="a"
+                    href={sermon.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <PlayCircleOutlineIcon sx={{ fontSize: 56, color: '#C9A84C' }} />
                   </Box>
@@ -109,7 +89,7 @@ export default function LatestSermons() {
                 <CardContent sx={{ flex: 1 }}>
                   <Box sx={{ display: 'flex', gap: 1, mb: 1.5 }}>
                     <Chip
-                      label={sermon.category}
+                      label={'Dominion Television'}
                       size="small"
                       sx={{
                         bgcolor: 'rgba(201,168,76,0.1)',
@@ -134,7 +114,7 @@ export default function LatestSermons() {
                     {sermon.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.8rem' }}>
-                    {sermon.speaker} &bull; {sermon.date}
+                    Pastor Joshua Vincent &bull; {sermon.publishedAt}
                   </Typography>
                 </CardContent>
 
@@ -143,6 +123,8 @@ export default function LatestSermons() {
                     variant="outlined"
                     color="primary"
                     size="small"
+                    href={sermon?.url}
+                    target="_blank"
                     startIcon={<PlayCircleOutlineIcon />}
                     sx={{ fontWeight: 700, fontSize: '0.75rem' }}
                   >

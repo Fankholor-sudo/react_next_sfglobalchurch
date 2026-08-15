@@ -16,34 +16,33 @@ import Tab from '@mui/material/Tab'
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutlined'
 import MicIcon from '@mui/icons-material/Mic'
 import SectionTitle from '../SectionTitle'
+import { YouTubeVideo } from '@/app/lib/youtube'
 
-const allSermons = [
-  { id: 1, title: 'Walking in Your Divine Dominion', speaker: 'Pastor Mnisi', date: 'July 20, 2025', category: 'Dominion', series: 'Dominion Series', duration: '54 min' },
-  { id: 2, title: 'The Spirit of a Champion', speaker: 'Pastor Joshua Vincent', date: 'July 13, 2025', category: 'Identity', series: 'Who You Are', duration: '48 min' },
-  { id: 3, title: 'Positioned for Purpose', speaker: 'Pastor Makhubela', date: 'July 6, 2025', category: 'Purpose', series: 'Kingdom Living', duration: '61 min' },
-  { id: 4, title: 'Faith That Moves Mountains', speaker: 'Pastor Mnisi', date: 'June 29, 2025', category: 'Faith', series: 'Faith Series', duration: '52 min' },
-  { id: 5, title: 'The Power of Prayer', speaker: 'Pastor James Mqadi', date: 'June 22, 2025', category: 'Prayer', series: 'Prayer School', duration: '45 min' },
-  { id: 6, title: 'Abundance & Overflow', speaker: 'Pastor Joshua Vincent', date: 'June 15, 2025', category: 'Provision', series: 'Kingdom Finances', duration: '57 min' },
-  { id: 7, title: 'Healing is Your Heritage', speaker: 'Pastor Makhubela', date: 'June 8, 2025', category: 'Healing', series: 'Miracles', duration: '63 min' },
-  { id: 8, title: 'The Fear of the Lord', speaker: 'Pastor James Mqadi', date: 'June 1, 2025', category: 'Wisdom', series: 'Wisdom Series', duration: '50 min' },
-  { id: 9, title: 'Raising Godly Children', speaker: 'Pastor Mnisi', date: 'May 25, 2025', category: 'Family', series: 'Family Matters', duration: '44 min' },
-]
+interface SermonsTabProps {
+  videos: YouTubeVideo[],
+  loading: boolean,
+  error: string | null,
+}
 
-const categories = ['All', 'Dominion', 'Identity', 'Purpose', 'Faith', 'Prayer', 'Provision', 'Healing', 'Family']
+const categories = ['All', 'Sunday', 'Friday']
 
-export default function SermonsTabs() {
+export default function SermonsTabs({videos, loading, error}: SermonsTabProps) {
   const [activeCategory, setActiveCategory] = React.useState('All')
+  const filtered: YouTubeVideo[] = activeCategory === 'All'? videos: 
+    videos.filter((s) => s.title.toLowerCase().includes(activeCategory.toLowerCase()))
+  const latestSermon: YouTubeVideo = videos[0] || null
 
-  const filtered = activeCategory === 'All'
-    ? allSermons
-    : allSermons.filter((s) => s.category === activeCategory)
+  React.useEffect(() => {
+    console.log({ activeCategory })
+  }, [activeCategory])
+
+  if (loading) return <div>Loading sermons...</div>
+  if (error) return <div>Unable to load sermons.</div>
 
   return (
     <Box sx={{ py: { xs: 8, md: 12 }, bgcolor: '#0F1117' }}>
       <Container maxWidth="lg">
-        {/* Featured / Latest */}
         <SectionTitle overline="Latest Message" title="This Week's Sermon" />
-
         <Card
           sx={{
             display: 'flex',
@@ -56,8 +55,8 @@ export default function SermonsTabs() {
           <Box sx={{ position: 'relative', width: { xs: '100%', md: 480 }, minHeight: { xs: 260, md: 300 }, flexShrink: 0 }}>
             <CardMedia
               component="img"
-              image="/images/sermon-thumb.png"
-              alt="Walking in Your Divine Dominion"
+              image={latestSermon?.thumbnail || '/images/sermon-thumb.png'}
+              alt={latestSermon?.title || 'Latest Sermon'}
               sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
             <Box
@@ -72,13 +71,17 @@ export default function SermonsTabs() {
                 transition: 'background-color 0.2s',
                 '&:hover': { bgcolor: 'rgba(15,17,23,0.55)' },
               }}
+              component="a"
+              href={latestSermon?.url}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <PlayCircleOutlineIcon sx={{ fontSize: 72, color: '#C9A84C' }} />
+              <PlayCircleOutlineIcon sx={{ fontSize: 72, color: '#C9A84C' }}/>
             </Box>
           </Box>
           <CardContent sx={{ p: { xs: 3, md: 5 }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <Chip
-              label="Dominion Series"
+              label="Dominion Television"
               size="small"
               sx={{ mb: 2, alignSelf: 'flex-start', bgcolor: 'rgba(201,168,76,0.1)', color: '#C9A84C', border: '1px solid rgba(201,168,76,0.25)', fontWeight: 600 }}
             />
@@ -93,19 +96,28 @@ export default function SermonsTabs() {
                 lineHeight: 1.3,
               }}
             >
-              Walking in Your Divine Dominion
+              {latestSermon?.title || 'Walking in Your Divine Dominion'}
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
               <MicIcon sx={{ fontSize: 16, color: '#C9A84C' }} />
               <Typography variant="body2" color="text.secondary">
-                Pastor Joshua Vincent &bull; July 20, 2025 &bull; 54 min
+                Pastor Joshua Vincent &bull; {latestSermon.publishedAt} &bull; {latestSermon.duration}
               </Typography>
             </Box>
             <Typography variant="body1" color="text.secondary" sx={{ mb: 3, lineHeight: 1.8 }}>
-              Discover the eternal truth that you were not created to merely survive, but to dominate. This message will unlock the understanding of your divine mandate and how to walk in it daily.
+              True faith is born from the knowledge of God. Leave your "Egypt" behind, 
+              stand on what God has spoken, and believe both the Lord your God and His prophets.
+              When faith is rooted in revelation, it will always produce results.
             </Typography>
             <Box sx={{ display: 'flex', gap: 2 }}>
-              <Button variant="contained" color="primary" startIcon={<PlayCircleOutlineIcon />} sx={{ fontWeight: 700 }}>
+              <Button
+                variant="contained"
+                color="primary"
+                href={latestSermon?.url}
+                target="_blank"
+                startIcon={<PlayCircleOutlineIcon />}
+                sx={{ fontWeight: 700 }}
+              >
                 Watch Now
               </Button>
               <Button variant="outlined" color="primary" sx={{ fontWeight: 700 }}>
@@ -115,7 +127,6 @@ export default function SermonsTabs() {
           </CardContent>
         </Card>
 
-        {/* Filter tabs */}
         <SectionTitle overline="Archive" title="All Messages" />
 
         <Box sx={{ mb: 4, borderBottom: '1px solid rgba(201,168,76,0.15)' }}>
@@ -152,7 +163,7 @@ export default function SermonsTabs() {
                   <CardMedia
                     component="img"
                     height="180"
-                    image="/images/sermon-thumb.png"
+                    image={sermon.thumbnail}
                     alt={sermon.title}
                     sx={{ objectFit: 'cover' }}
                   />
@@ -169,8 +180,12 @@ export default function SermonsTabs() {
                       cursor: 'pointer',
                       '&:hover': { opacity: 1 },
                     }}
+                    component="a"
+                    href={sermon.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <PlayCircleOutlineIcon sx={{ fontSize: 52, color: '#C9A84C' }} />
+                    <PlayCircleOutlineIcon sx={{ fontSize: 52, color: '#C9A84C' }}/>
                   </Box>
                   <Chip
                     label={sermon.duration}
@@ -181,7 +196,7 @@ export default function SermonsTabs() {
                 <CardContent sx={{ flex: 1 }}>
                   <Box sx={{ display: 'flex', gap: 1, mb: 1.5, flexWrap: 'wrap' }}>
                     <Chip
-                      label={sermon.category}
+                      label={'Dominion Television'}
                       size="small"
                       sx={{ bgcolor: 'rgba(201,168,76,0.1)', color: '#C9A84C', fontWeight: 600, fontSize: '0.68rem', border: '1px solid rgba(201,168,76,0.25)' }}
                     />
@@ -193,11 +208,20 @@ export default function SermonsTabs() {
                     {sermon.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.78rem' }}>
-                    {sermon.speaker} &bull; {sermon.date}
+                    {/* speaker */}
+                    {'Pastor Joshua Vincent'} &bull; {sermon.publishedAt}
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ px: 2, pb: 2 }}>
-                  <Button variant="outlined" color="primary" size="small" startIcon={<PlayCircleOutlineIcon />} sx={{ fontWeight: 700, fontSize: '0.72rem' }}>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    href={sermon.url}
+                    target="_blank"
+                    size="small"
+                    startIcon={<PlayCircleOutlineIcon />}
+                    sx={{ fontWeight: 700, fontSize: '0.72rem' }}
+                  >
                     Watch
                   </Button>
                 </CardActions>

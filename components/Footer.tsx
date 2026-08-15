@@ -209,7 +209,7 @@ export default function Footer() {
             {[
               { icon: <LocationOnIcon sx={{ fontSize: 16 }} />, text: '1025 Park Street, Hatfield, Pretoria, Gauteng, 0083' },
               { icon: <PhoneIcon sx={{ fontSize: 16 }} />, text: '+27 78 714 1157' },
-              { icon: <EmailIcon sx={{ fontSize: 16 }} />, text: 'info@spiritfountain.org' },
+              { icon: <EmailIcon sx={{ fontSize: 16 }} />, text: 'dominiontvsfi@gmail.com' },
             ].map((item, i) => (
               <Box key={i} sx={{ display: 'flex', gap: 1, mb: 1.5, alignItems: 'flex-start' }}>
                 <Box sx={{ color: '#C9A84C', mt: 0.2, flexShrink: 0 }}>{item.icon}</Box>
