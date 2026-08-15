@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function HeroSection() {
   return (
@@ -26,7 +25,7 @@ export default function HeroSection() {
         sx={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'url(/images/hero-bg.png)',
+          backgroundImage: 'url(/images/leaders/Ps_V_OnStage.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center top',
         }}

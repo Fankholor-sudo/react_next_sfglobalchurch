@@ -30,7 +30,11 @@ export default function PageHero({ title, subtitle, bgImage }: PageHeroProps) {
             inset: 0,
             backgroundImage: `url(${bgImage})`,
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundPosition: {
+              xs: 'center 20%',
+              md: 'center 30%',
+              lg: 'center 35%',
+            },
             opacity: 0.18,
           }}
         />

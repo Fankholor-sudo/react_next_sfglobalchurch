@@ -13,7 +13,7 @@ export default function SermonsPage() {
       <PageHero
         title="Sermons"
         subtitle="Powerful, life-transforming messages from the Word of God. Watch, listen, and be changed."
-        bgImage="/images/sermon-thumb.png"
+        bgImage="/images/leaders/Ps_V_Sermons.jpg"
       />
       <SermonsTabs videos={videos} loading={loading} error={error} />
     </PageLayout>
