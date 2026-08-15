@@ -51,7 +51,7 @@ export default function SermonsTabs({videos, loading, error}: SermonsTabProps) {
           <Box sx={{ position: 'relative', width: { xs: '100%', md: 480 }, minHeight: { xs: 260, md: 300 }, flexShrink: 0 }}>
             <CardMedia
               component="img"
-              image={latestSermon?.thumbnail || '/images/sermon-thumb.png'}
+              image={latestSermon?.thumbnail}
               alt={latestSermon?.title || 'Latest Sermon'}
               sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
@@ -115,9 +115,6 @@ export default function SermonsTabs({videos, loading, error}: SermonsTabProps) {
                 sx={{ fontWeight: 700 }}
               >
                 Watch Now
-              </Button>
-              <Button variant="outlined" color="primary" sx={{ fontWeight: 700 }}>
-                Listen Audio
               </Button>
             </Box>
           </CardContent>

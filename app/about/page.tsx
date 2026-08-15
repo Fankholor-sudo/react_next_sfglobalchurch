@@ -12,52 +12,8 @@ import Image from 'next/image'
 import PageLayout from '@/components/PageLayout'
 import PageHero from '@/components/PageHero'
 import SectionTitle from '@/components/SectionTitle'
+import { leadership, values } from '@/public/data'
 
-const values = [
-  {
-    icon: '✦',
-    title: 'Faith',
-    description: "We live and operate by faith in God's Word, believing the impossible is possible through Christ.",
-  },
-  {
-    icon: '✦',
-    title: 'Excellence',
-    description: 'We pursue excellence in everything we do, reflecting the character of our King.',
-  },
-  {
-    icon: '✦',
-    title: 'Community',
-    description: "We build genuine relationships, bearing one another's burdens and celebrating each other's victories.",
-  },
-  {
-    icon: '✦',
-    title: 'Kingdom Impact',
-    description: 'We are agents of transformation — changing cities, nations, and generations for the glory of God.',
-  },
-]
-
-const leadership = [
-  {
-    name: 'Pastor Joshua Vincent',
-    title: 'Senior Pastor & Founder',
-    bio: 'Pastor Joshua Vincent carries a burning mandate to raise kingdom champions. His teaching ministry has impacted thousands across Africa.',
-  },
-  {
-    name: 'Pastor Mnisi',
-    title: 'Co-Pastor & Teaching Pastor',
-    bio: 'Stand on what God has spoken, and believe both the Lord your God and His prophets. When faith is rooted in revelation, it will always produce results.',
-  },
-  {
-    name: 'Pastor James Mqadi',
-    title: 'Co-Pastor & Teaching Pastor',
-    bio: 'The heavens declare it. The gates are open. And the call is clear: Enter His Rest.',
-  },
-  {
-    name: 'Pastor Makhubela',
-    title: 'Co-Pastor & Teaching Pastor',
-    bio: 'The King reigns. The Word is open, and your dominion is calling.',
-  },
-]
 
 export default function AboutPage() {
   return (
@@ -161,7 +117,7 @@ export default function AboutPage() {
             <Grid size={{ xs: 12, md: 6 }}>
               <Box sx={{ position: 'relative', borderRadius: 2, overflow: 'hidden', aspectRatio: '4/3' }}>
                 <Image
-                  src="/images/about-bg.png"
+                  src="/images/about.jpg"
                   alt="Spirit Fountain Global Church community"
                   fill
                   style={{ objectFit: 'cover' }}
@@ -232,19 +188,17 @@ export default function AboutPage() {
                 <Card sx={{ bgcolor: '#181C27', textAlign: 'center' }}>
                   <CardContent sx={{ pt: 4, pb: 3 }}>
                     <Avatar
+                      src={leader.image}
+                      alt={leader.name}
                       sx={{
-                        width: 80,
-                        height: 80,
+                        width: 120,
+                        height: 120,
                         mx: 'auto',
                         mb: 2,
-                        bgcolor: '#C9A84C',
-                        fontFamily: 'var(--font-cinzel), serif',
-                        fontWeight: 700,
-                        fontSize: '1.5rem',
-                        color: '#0F1117',
+                        bgcolor: '#9E7A28',
                       }}
                     >
-                      {leader.name.charAt(8)}
+                      {leader.name.charAt(7)}
                     </Avatar>
                     <Typography
                       variant="h6"

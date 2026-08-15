@@ -34,12 +34,13 @@ export default function WelcomeSection() {
                 },
               }}
             >
-              <Box sx={{ position: 'relative', zIndex: 1, borderRadius: 2, overflow: 'hidden', aspectRatio: '4/3' }}>
+              <Box sx={{ position: 'relative', zIndex: 1, borderRadius: 2, overflow: 'hidden', aspectRatio: '4/4' }}>
                 <Image
-                  src="/images/about-bg.png"
+                  src="/images/church.jpg"
                   alt="Spirit Fountain Global Church community"
                   fill
                   style={{ objectFit: 'cover' }}
+                  loading="eager"
                 />
               </Box>
             </Box>
