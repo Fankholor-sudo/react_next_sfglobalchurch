@@ -46,7 +46,7 @@ interface YouTubePlaylistResponse {
 }
 
 export async function getLatestYouTubeVideos(
-  limit = 10
+  limit = 12
 ): Promise<YouTubeVideo[]> {
   if (!CHANNEL_ID) {
     throw new Error('YOUTUBE_CHANNEL_ID is not configured')

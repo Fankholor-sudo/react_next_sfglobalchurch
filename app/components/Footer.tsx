@@ -28,8 +28,9 @@ const quickLinks = [
 
 const serviceTimes = [
   { id: 'sunday', day: 'Sunday Service', time: '10:00 AM' },
-  { id: 'friday', day: 'Friday Prayer Night', time: '18:00 PM' },
   { id: 'midnight', day: 'Monday Midnight Hour Prayer', time: '00:00 AM' },
+  { id: 'friday', day: 'Friday Prayer Night', time: '18:00 PM' },
+  { id: 'worship', day: 'Last Fri. Worship Night', time: '20:00 PM' },
 ]
 
 const socialLinks = [

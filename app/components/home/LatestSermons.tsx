@@ -13,7 +13,7 @@ import Chip from '@mui/material/Chip'
 import Link from 'next/link'
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutlined'
 import SectionTitle from '../SectionTitle'
-import { useLatestVideos } from '@/app/hooks/useLatestVideos'
+import { useLatestVideos } from '@/app/(client)/hooks/useLatestVideos'
 
 
 export default function LatestSermons() {

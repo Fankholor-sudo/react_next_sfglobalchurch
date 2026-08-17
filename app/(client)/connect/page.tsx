@@ -7,10 +7,10 @@ import Typography from '@mui/material/Typography'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Divider from '@mui/material/Divider'
-import PageLayout from '@/components/PageLayout'
-import PageHero from '@/components/PageHero'
-import SectionTitle from '@/components/SectionTitle'
-import ContactForm from '@/components/connect/ContactForm'
+import PageLayout from '@/app/components/PageLayout'
+import PageHero from '@/app/components/PageHero'
+import SectionTitle from '@/app/components/SectionTitle'
+import ContactForm from '@/app/components/connect/ContactForm'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import PhoneIcon from '@mui/icons-material/Phone'
 import EmailIcon from '@mui/icons-material/Email'
@@ -19,12 +19,13 @@ import FacebookIcon from '@mui/icons-material/Facebook'
 import YouTubeIcon from '@mui/icons-material/YouTube'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import IconButton from '@mui/material/IconButton'
-import { TikTokIcon } from '@/components/utils'
+import { TikTokIcon } from '@/app/components/utils'
 
 const serviceTimes = [
   { label: 'Sunday Service', time: '10:00 AM' },
-  { label: 'Friday Prayer Night', time: '18:00 PM' },
   { label: 'Monday Midnight Hour Prayer', time: '00:00 AM' },
+  { label: 'Friday Prayer Night', time: '18:00 PM' },
+  { label: 'Last Fri. Worship Night', time: '20:00 PM' },
 ]
 
 const contactDetails = [

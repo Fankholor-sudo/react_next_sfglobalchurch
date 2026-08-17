@@ -7,10 +7,10 @@ import Typography from '@mui/material/Typography'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Divider from '@mui/material/Divider'
-import PageLayout from '@/components/PageLayout'
-import PageHero from '@/components/PageHero'
-import SectionTitle from '@/components/SectionTitle'
-import GiveForm from '@/components/give/GiveForm'
+import PageLayout from '@/app/components/PageLayout'
+import PageHero from '@/app/components/PageHero'
+import SectionTitle from '@/app/components/SectionTitle'
+import GiveForm from '@/app/components/give/GiveForm'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import ChurchIcon from '@mui/icons-material/Church'
 import PeopleIcon from '@mui/icons-material/People'
@@ -183,7 +183,7 @@ export default function GivePage() {
                 <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.8 }}>
                   For large pledges, building fund commitments, or to set up a recurring giving arrangement, please contact our finance team at{' '}
                   <Typography component="span" sx={{ color: '#C9A84C' }}>
-                    finance@spiritfountain.org
+                    dominiontvsfi@gmail.com
                   </Typography>
                 </Typography>
               </Box>
