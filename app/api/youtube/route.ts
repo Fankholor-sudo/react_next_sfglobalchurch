@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getLatestYouTubeVideos } from '@/app/lib/youtube'
+import { getLatestYouTubeVideos } from '@/app/api/youtube'
 
 export async function GET() {
   try {

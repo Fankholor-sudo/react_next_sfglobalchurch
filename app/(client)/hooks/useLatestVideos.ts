@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import type { YouTubeVideo } from '@/app/lib/youtube'
+import type { YouTubeVideo } from '@/app/api/youtube'
 
 interface UseLatestVideosResult {
   videos: YouTubeVideo[]

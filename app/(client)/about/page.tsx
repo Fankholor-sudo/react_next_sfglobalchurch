@@ -6,13 +6,13 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import Avatar from '@mui/material/Avatar'
 import Divider from '@mui/material/Divider'
 import Image from 'next/image'
-import PageLayout from '@/components/PageLayout'
-import PageHero from '@/components/PageHero'
-import SectionTitle from '@/components/SectionTitle'
+import PageLayout from '@/app/components/PageLayout'
+import PageHero from '@/app/components/PageHero'
+import SectionTitle from '@/app/components/SectionTitle'
 import { leadership, values } from '@/public/data'
+import LeaderCard from '@/app/components/about/leadercard'
 
 
 export default function AboutPage() {
@@ -183,52 +183,17 @@ export default function AboutPage() {
             subtitle="Servant leaders who are passionate about people and the purposes of God."
           />
           <Grid container spacing={4} sx={{ justifyContent: 'center' }}>
-            {leadership.map((leader, i) => (
-              <Grid key={i} size={{ xs: 12, sm: 6, md: 4 }}>
-                <Card sx={{ bgcolor: '#181C27', textAlign: 'center' }}>
-                  <CardContent sx={{ pt: 4, pb: 3 }}>
-                    <Avatar
-                      src={leader.image}
-                      alt={leader.name}
-                      sx={{
-                        width: 120,
-                        height: 120,
-                        mx: 'auto',
-                        mb: 2,
-                        bgcolor: '#9E7A28',
-                      }}
-                    >
-                      {leader.name.charAt(7)}
-                    </Avatar>
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontFamily: 'var(--font-cinzel), serif',
-                        fontWeight: 700,
-                        color: '#FFFFFF',
-                        fontSize: '1rem',
-                        mb: 0.5,
-                      }}
-                    >
-                      {leader.name}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: '#C9A84C',
-                        fontWeight: 600,
-                        fontSize: '0.78rem',
-                        letterSpacing: '0.05em',
-                        mb: 2,
-                      }}
-                    >
-                      {leader.title}
-                    </Typography>
-                    <Divider sx={{ mb: 2 }} />
-                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-                      {leader.bio}
-                    </Typography>
-                  </CardContent>
-                </Card>
+            {leadership[0] && (
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Grid size={{ xs: 12, sm: 6, md: 5 }}>
+                  <LeaderCard leader={leadership[0]} featured />
+                </Grid>
+              </Box>
+            )}
+          
+            {leadership.slice(1).map((leader) => (
+              <Grid key={leader.name} size={{ xs: 12, sm: 6, md: 4 }}>
+                <LeaderCard leader={leader} />
               </Grid>
             ))}
           </Grid>

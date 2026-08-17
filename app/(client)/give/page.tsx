@@ -7,10 +7,10 @@ import Typography from '@mui/material/Typography'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Divider from '@mui/material/Divider'
-import PageLayout from '@/components/PageLayout'
-import PageHero from '@/components/PageHero'
-import SectionTitle from '@/components/SectionTitle'
-import GiveForm from '@/components/give/GiveForm'
+import PageLayout from '@/app/components/PageLayout'
+import PageHero from '@/app/components/PageHero'
+import SectionTitle from '@/app/components/SectionTitle'
+import GiveForm from '@/app/components/give/GiveForm'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import ChurchIcon from '@mui/icons-material/Church'
 import PeopleIcon from '@mui/icons-material/People'
@@ -36,8 +36,8 @@ const givingReasons = [
 
 const bankDetails = [
   { label: 'Bank', value: 'First National Bank (FNB)' },
-  { label: 'Account Name', value: 'Spirit Fountain Global Church' },
-  { label: 'Account Number', value: '62 000 000 000' },
+  { label: 'Account Name', value: 'Spirit Fountain International' },
+  { label: 'Account Number', value: '628 1758 1467' },
   { label: 'Branch Code', value: '250 655' },
   { label: 'Account Type', value: 'Cheque / Current' },
   { label: 'Reference', value: 'Your Name + Giving Type' },
@@ -140,7 +140,7 @@ export default function GivePage() {
               <Card sx={{ bgcolor: '#181C27' }}>
                 <CardContent sx={{ p: 3 }}>
                   <Typography variant="body2" color="text.secondary" sx={{ mb: 3, lineHeight: 1.8 }}>
-                    You can also make a direct EFT transfer using the banking details below. Please use your name and giving type as reference.
+                    Make a direct EFT transfer using the banking details below. Please use your name and giving type as reference.
                   </Typography>
                   {bankDetails.map((item, i) => (
                     <Box key={i}>
@@ -183,7 +183,7 @@ export default function GivePage() {
                 <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.8 }}>
                   For large pledges, building fund commitments, or to set up a recurring giving arrangement, please contact our finance team at{' '}
                   <Typography component="span" sx={{ color: '#C9A84C' }}>
-                    finance@spiritfountain.org
+                    dominiontvsfi@gmail.com
                   </Typography>
                 </Typography>
               </Box>

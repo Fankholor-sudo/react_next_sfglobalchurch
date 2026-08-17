@@ -1,9 +1,9 @@
 'use client'
 
-import PageLayout from '@/components/PageLayout'
-import PageHero from '@/components/PageHero'
-import SermonsTabs from '@/components/sermons/SermonsTabs'
-import { useLatestVideos } from '@/app/hooks/useLatestVideos'
+import PageLayout from '@/app/components/PageLayout'
+import PageHero from '@/app/components/PageHero'
+import SermonsTabs from '@/app/components/sermons/SermonsTabs'
+import { useLatestVideos } from '@/app/(client)/hooks/useLatestVideos'
 
 export default function SermonsPage() {
   const { videos, loading, error} = useLatestVideos()

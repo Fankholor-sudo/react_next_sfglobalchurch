@@ -16,7 +16,7 @@ import Tab from '@mui/material/Tab'
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutlined'
 import MicIcon from '@mui/icons-material/Mic'
 import SectionTitle from '../SectionTitle'
-import { YouTubeVideo } from '@/app/lib/youtube'
+import { YouTubeVideo } from '@/app/api/youtube'
 
 interface SermonsTabProps {
   videos: YouTubeVideo[],
@@ -97,7 +97,7 @@ export default function SermonsTabs({videos, loading, error}: SermonsTabProps) {
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
               <MicIcon sx={{ fontSize: 16, color: '#C9A84C' }} />
               <Typography variant="body2" color="text.secondary">
-                Pastor Joshua Vincent &bull; {latestSermon.publishedAt} &bull; {latestSermon.duration}
+                {latestSermon?.description.split('-')[0] || '\u2014'} &bull; {latestSermon.publishedAt} &bull; {latestSermon.duration}
               </Typography>
             </Box>
             <Typography variant="body1" color="text.secondary" sx={{ mb: 3, lineHeight: 1.8 }}>
@@ -201,8 +201,7 @@ export default function SermonsTabs({videos, loading, error}: SermonsTabProps) {
                     {sermon.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.78rem' }}>
-                    {/* speaker */}
-                    {'Pastor Joshua Vincent'} &bull; {sermon.publishedAt}
+                    {sermon.description.split('-')[0] || '\u2014'} &bull; {sermon.publishedAt}
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ px: 2, pb: 2 }}>
