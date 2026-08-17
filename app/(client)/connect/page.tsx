@@ -22,10 +22,10 @@ import IconButton from '@mui/material/IconButton'
 import { TikTokIcon } from '@/app/components/utils'
 
 const serviceTimes = [
-  { label: 'Sunday Service', time: '10:00 AM' },
-  { label: 'Monday Midnight Hour Prayer', time: '00:00 AM' },
-  { label: 'Friday Prayer Night', time: '18:00 PM' },
-  { label: 'Last Fri. Worship Night', time: '20:00 PM' },
+  { label: 'Sunday Service', time: '10:00AM - 12:30PM' },
+  { label: 'Sunday Midnight Prayer', time: '00:00AM - 00:30AM' },
+  { label: 'Friday Service', time: '18:00PM - 20:00PM' },
+  { label: 'Last Fri. Worship Night', time: '20:00PM - 23:59PM' },
 ]
 
 const contactDetails = [
@@ -206,7 +206,7 @@ export default function ConnectPage() {
             target="_blank"
             rel="noopener noreferrer"
             variant="body2"
-            sx={{ color: '#C9A84C', mt: 1, display: 'block', textDecoration: 'underline', fontWeight: 600 }}
+            sx={{ color: '#C9A84C', mt: 1, display: 'block', textDecoration: 'none', fontWeight: 600 }}
           >
             Get Directions on Google Maps
           </Typography>

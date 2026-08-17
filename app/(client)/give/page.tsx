@@ -36,8 +36,8 @@ const givingReasons = [
 
 const bankDetails = [
   { label: 'Bank', value: 'First National Bank (FNB)' },
-  { label: 'Account Name', value: 'Spirit Fountain Global Church' },
-  { label: 'Account Number', value: '62 000 000 000' },
+  { label: 'Account Name', value: 'Spirit Fountain International' },
+  { label: 'Account Number', value: '628 1758 1467' },
   { label: 'Branch Code', value: '250 655' },
   { label: 'Account Type', value: 'Cheque / Current' },
   { label: 'Reference', value: 'Your Name + Giving Type' },
@@ -140,7 +140,7 @@ export default function GivePage() {
               <Card sx={{ bgcolor: '#181C27' }}>
                 <CardContent sx={{ p: 3 }}>
                   <Typography variant="body2" color="text.secondary" sx={{ mb: 3, lineHeight: 1.8 }}>
-                    You can also make a direct EFT transfer using the banking details below. Please use your name and giving type as reference.
+                    Make a direct EFT transfer using the banking details below. Please use your name and giving type as reference.
                   </Typography>
                   {bankDetails.map((item, i) => (
                     <Box key={i}>
