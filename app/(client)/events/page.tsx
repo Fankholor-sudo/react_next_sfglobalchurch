@@ -16,6 +16,13 @@ import SectionTitle from '@/app/components/SectionTitle'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Church Events",
+  description:
+    "Discover upcoming services, conferences, worship nights and other events at Spirit Fountain Global Church in Pretoria.",
+};
 
 const featuredEvent = {
   title: 'Kingdom Dominion Conference 2025',
