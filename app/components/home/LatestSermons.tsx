@@ -19,7 +19,7 @@ import { useLatestVideos } from '@/app/(client)/hooks/useLatestVideos'
 export default function LatestSermons() {
   const { videos, loading, error} = useLatestVideos()
 
-  if (loading) return <div>Loading sermons...</div>
+  if (loading) return <div>Sermons...</div>
   if (error) return <div>Unable to load sermons.</div>
   
   return (

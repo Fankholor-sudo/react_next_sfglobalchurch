@@ -24,7 +24,7 @@ interface SermonsTabProps {
   error: string | null,
 }
 
-const categories = ['All', 'Sunday', 'Friday']
+const categories = ['All', 'Sunday', 'Friday', 'Worship Night']
 
 export default function SermonsTabs({videos, loading, error}: SermonsTabProps) {
   const [activeCategory, setActiveCategory] = React.useState('All')
@@ -32,7 +32,7 @@ export default function SermonsTabs({videos, loading, error}: SermonsTabProps) {
     videos.filter((s) => s.title.toLowerCase().includes(activeCategory.toLowerCase()))
   const latestSermon: YouTubeVideo = videos[0] || null
 
-  if (loading) return <div>Loading sermons...</div>
+  if (loading) return <div>Sermons...</div>
   if (error) return <div>Unable to load sermons.</div>
 
   return (

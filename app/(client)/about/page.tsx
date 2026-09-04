@@ -14,7 +14,6 @@ import SectionTitle from '@/app/components/SectionTitle'
 import { leadership, values } from '@/public/data'
 import LeaderCard from '@/app/components/about/leadercard'
 
-
 export default function AboutPage() {
   return (
     <PageLayout>
