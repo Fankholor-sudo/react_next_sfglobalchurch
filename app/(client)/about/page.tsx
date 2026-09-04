@@ -13,13 +13,6 @@ import PageHero from '@/app/components/PageHero'
 import SectionTitle from '@/app/components/SectionTitle'
 import { leadership, values } from '@/public/data'
 import LeaderCard from '@/app/components/about/leadercard'
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Learn about Spirit Fountain Global Church, our mission, vision and commitment to raising champions for God in Pretoria.",
-};
 
 export default function AboutPage() {
   return (
