@@ -4,7 +4,7 @@ import PageLayout from '@/app/components/PageLayout'
 import PageHero from '@/app/components/PageHero'
 import SermonsTabs from '@/app/components/sermons/SermonsTabs'
 import { useLatestVideos } from '@/app/(client)/hooks/useLatestVideos'
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Sermons",
