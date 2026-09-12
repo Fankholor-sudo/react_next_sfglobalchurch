@@ -57,7 +57,7 @@ export default function Footer() {
           <Grid size={{ xs: 12, md: 4 }}>
             <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 14, textDecoration: 'none', marginBottom: 16 }}>
               <Image
-                src="/images/logo-church.jpg"
+                src="/images/no-bg-logo.png"
                 alt="Spirit Fountain Global Church Logo"
                 width={60}
                 height={60}

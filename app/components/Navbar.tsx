@@ -30,6 +30,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
+  const menuButtonRef = React.useRef<HTMLButtonElement | null>(null)
   const pathname = usePathname()
 
   const trigger = useScrollTrigger({
@@ -38,6 +39,7 @@ export default function Navbar() {
   })
 
   const toggleDrawer = () => setDrawerOpen((prev) => !prev)
+  const closeDrawer = () => setDrawerOpen(false)
 
   return (
     <>
@@ -64,7 +66,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
             <Image
-              src="/images/logo-church.jpg"
+              src="/images/no-bg-logo.png"
               alt="Spirit Fountain Global Church Logo"
               width={48}
               height={48}
@@ -136,19 +138,11 @@ export default function Navbar() {
                 </Button>
               )
             })}
-            {/* <Button
-              component={Link}
-              href="/give"
-              variant="contained"
-              color="primary"
-              sx={{ ml: 2, fontWeight: 700, fontSize: '0.8rem' }}
-            >
-              Give
-            </Button> */}
           </Box>
 
           {/* Mobile hamburger */}
           <IconButton
+            ref={menuButtonRef}
             aria-label="Open navigation menu"
             onClick={toggleDrawer}
             sx={{ display: { xs: 'flex', md: 'none' }, color: '#C9A84C' }}
@@ -162,7 +156,7 @@ export default function Navbar() {
       <Drawer
         anchor="right"
         open={drawerOpen}
-        onClose={() => setDrawerOpen(false)}
+        onClose={closeDrawer}
         slotProps={{
           paper: {
             sx: {
@@ -185,7 +179,7 @@ export default function Navbar() {
         >
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }} onClick={() => setDrawerOpen(false)}>
             <Image
-              src="/images/logo-church.jpg"
+              src="/images/no-bg-logo.png"
               alt="Spirit Fountain Global Church Logo"
               width={40}
               height={40}
@@ -248,20 +242,6 @@ export default function Navbar() {
         </List>
 
         <Divider sx={{ mx: 3, my: 2 }} />
-
-        <Box sx={{ px: 3 }}>
-          <Button
-            component={Link}
-            href="/give"
-            variant="contained"
-            color="primary"
-            fullWidth
-            onClick={() => setDrawerOpen(false)}
-            sx={{ fontWeight: 700, py: 1.5 }}
-          >
-            Give Now
-          </Button>
-        </Box>
       </Drawer>
     </>
   )
