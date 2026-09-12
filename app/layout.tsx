@@ -59,6 +59,15 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+/* Structured data for Google and other search engines */
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Spirit Fountain Global Church',
+  alternateName: 'Spirit Fountain Global Church',
+  url: 'https://www.spiritfountainglobalchurch.com',
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -72,6 +81,12 @@ export default function RootLayout({
       style={{ backgroundColor: '#0F1117' }}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd),
+          }}
+        />
         <AppThemeProvider>{children}</AppThemeProvider>
       </body>
     </html>

@@ -156,10 +156,6 @@ export default function EventsPage() {
                       />
                     ))}
                   </Box>
-
-                  <Button variant="contained" color="primary" size="large" sx={{ fontWeight: 700 }}>
-                    Register Now
-                  </Button>
                 </CardContent>
               </Grid>
             </Grid>
