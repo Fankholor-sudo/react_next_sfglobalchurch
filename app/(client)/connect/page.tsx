@@ -202,7 +202,7 @@ export default function ConnectPage() {
           </Typography>
           <Typography
             component="a"
-            href="https://maps.app.goo.gl/oykscqv3vHs74Gom7"
+            href="https://maps.app.goo.gl/CHGcXhjn7qosEbwz9"
             target="_blank"
             rel="noopener noreferrer"
             variant="body2"

@@ -32,17 +32,19 @@ const fieldSx = {
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = React.useState(false)
-
   const [firstName, setFirstName] = React.useState('')
   const [lastName, setLastName] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [phone, setPhone] = React.useState('')
   const [subject, setSubject] = React.useState('General Enquiry')
   const [message, setMessage] = React.useState('')
+  const [error, setError] = React.useState(false)
+  const [loading, setLoading] = React.useState(false)
 
-  const handleSubmit = (e: React.SubmitEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault()
-    const data = {
+    setLoading(true)
+    const payload = {
       firstName,
       lastName,
       email,
@@ -50,9 +52,25 @@ export default function ContactForm() {
       subject,
       message
     }
-    console.log(data)
-    setSubmitted(true)
-    handleReset()
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    .then(async (response) => {
+      const data = await response.json()
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong')
+      }
+      setSubmitted(true)
+      handleReset()
+    })
+    .catch ((error) => {
+      setError(true)
+      console.error('Error sending contact form:', error)
+    })
+    .finally(() => { setLoading(false) })
   }
 
   const handleReset = () => {
@@ -65,14 +83,15 @@ export default function ContactForm() {
   }
 
   React.useEffect(() => {
-    if (submitted) {
+    if (submitted || error) {
       const timer = setTimeout(() => {
         setSubmitted(false)
-      }, 10000)
+        setError(false)
+      }, 50000)
 
       return () => clearTimeout(timer)
     }
-  }, [submitted])
+  }, [submitted, error])
 
   return (
     <Box component="form" onSubmit={handleSubmit}>
@@ -87,6 +106,20 @@ export default function ContactForm() {
         }}
       >
         Thank you for reaching out! We will get back to you within 24–48 hours. God bless you.
+      </Alert>}
+      { error && <Alert
+        severity="error"
+        sx={{
+          mb: 5,
+          bgcolor: 'rgba(211,47,47,0.1)',
+          color: '#FF6B6B',
+          border: '1px solid rgba(211,47,47,0.3)',
+          '& .MuiAlert-icon': {
+            color: '#FF6B6B',
+          },
+        }}
+      >
+        We’re sorry, but we couldn’t send your message. Please try again later. If the problem persists, please contact us directly.
       </Alert>}
       <Grid container spacing={2.5}>
         <Grid size={{ xs: 12, sm: 6 }}>
