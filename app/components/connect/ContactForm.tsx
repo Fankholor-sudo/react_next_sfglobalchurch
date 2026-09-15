@@ -4,10 +4,11 @@ import * as React from 'react'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
+import CircularProgress from '@mui/material/CircularProgress'
+import SendIcon from '@mui/icons-material/Send'
+import MenuItem from '@mui/material/MenuItem'
 import Button from '@mui/material/Button'
 import Alert from '@mui/material/Alert'
-import MenuItem from '@mui/material/MenuItem'
-import SendIcon from '@mui/icons-material/Send'
 
 const subjects = [
   'General Enquiry',
@@ -209,10 +210,11 @@ export default function ContactForm() {
             variant="contained"
             color="primary"
             size="large"
-            endIcon={<SendIcon />}
-            sx={{ fontWeight: 700, px: 5 }}
+            endIcon={loading ? null: <SendIcon />}
+            sx={{ fontWeight: 700, px: 5, minWidth: 235 }}
+            disabled={loading}
           >
-            Send Message
+           { loading ? <CircularProgress size={26} color='inherit' /> : 'Send Message' }
           </Button>
         </Grid>
       </Grid>
