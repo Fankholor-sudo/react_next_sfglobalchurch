@@ -3,15 +3,16 @@
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
+import Alert from '@mui/material/Alert'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
-import MenuItem from '@mui/material/MenuItem'
-import Alert from '@mui/material/Alert'
-import Divider from '@mui/material/Divider'
+import CircularProgress from '@mui/material/CircularProgress'
 import FavoriteIcon from '@mui/icons-material/Favorite'
+import MenuItem from '@mui/material/MenuItem'
+import Divider from '@mui/material/Divider'
 
 const presetAmounts = ['50', '100', '200', '500', '1000']
 
@@ -305,10 +306,11 @@ export default function GiveForm() {
             color="primary"
             size="large"
             fullWidth
-            startIcon={<FavoriteIcon />}
+            startIcon={loading ? null: <FavoriteIcon />}
             sx={{ fontWeight: 700, py: 1.8, fontSize: '1rem' }}
+            disabled={loading}
           >
-            GIVE — R {customAmount || amount || '0'}
+            { loading ? <CircularProgress color='inherit' size={20} /> : `GIVE — R ${customAmount || amount || '0'}` }
           </Button>
         </Grid>
       </Grid>
