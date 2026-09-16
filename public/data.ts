@@ -44,6 +44,6 @@ export const values = [
   {
     icon: '✦',
     title: 'Kingdom Impact',
-    description: 'We are agents of transformation — changing cities, nations, and generations for the glory of God.',
+    description: 'We are agents of transformation; changing cities, nations, and generations for the glory of God.',
   },
 ]
