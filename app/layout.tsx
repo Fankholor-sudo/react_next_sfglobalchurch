@@ -40,8 +40,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: 'Spirit Fountain Global Church | Pretoria',
-    description:
-      'A Spirit-filled church community in Pretoria, Gauteng.',
+    description: 'A Spirit-filled church community in Pretoria, Gauteng.',
     url: 'https://www.spiritfountainglobalchurch.com',
     siteName: 'Spirit Fountain Global Church',
     locale: 'en_ZA',
