@@ -183,7 +183,7 @@ export default function GivePage() {
                 <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.8 }}>
                   For large pledges, building fund commitments, or to set up a recurring giving arrangement, please contact our finance team at{' '}
                   <Typography component="span" sx={{ color: '#C9A84C' }}>
-                    dominiontvsfi@gmail.com
+                    info@spiritfountainglobalchurch.com
                   </Typography>
                 </Typography>
               </Box>

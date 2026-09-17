@@ -18,7 +18,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutlined'
 import MicIcon from '@mui/icons-material/Mic'
 import SectionTitle from '../SectionTitle'
-import { YouTubeVideo } from '@/app/api/youtube'
+import { YouTubeVideo } from '@/app/utility/types'
 
 interface SermonsTabProps {
   videos: YouTubeVideo[],

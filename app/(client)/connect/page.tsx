@@ -31,7 +31,7 @@ const serviceTimes = [
 const contactDetails = [
   { icon: <LocationOnIcon />, label: 'Address', value: '1025 Park Street, Hatfield, Pretoria, Gauteng, 0083, South Africa' },
   { icon: <PhoneIcon />, label: 'Phone', value: '+27 78 714 1157' },
-  { icon: <EmailIcon />, label: 'Email', value: 'dominiontvsfi@gmail.com' },
+  { icon: <EmailIcon />, label: 'Email', value: 'info@spiritfountainglobalchurch.com' },
 ]
 
 const socialLinks = [
