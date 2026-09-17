@@ -13,44 +13,48 @@ import Link from 'next/link'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import SectionTitle from '../SectionTitle'
+import { useEvents } from '@/app/(client)/hooks/useEvents'
+import { formatDay, formatMonth } from '@/app/helpers/utils'
 
-const events = [
-  {
-    id: 1,
-    title: 'Kingdom Dominion Conference',
-    date: 'August 2–4, 2025',
-    day: '02',
-    month: 'AUG',
-    time: '9:00 AM – 9:00 PM',
-    location: 'SFGC Auditorium',
-    category: 'Conference',
-    description: 'A three-day power-packed conference to equip you with tools for kingdom impact and dominion in every sphere of life.',
-  },
-  {
-    id: 2,
-    title: 'Young Adults Night of Worship',
-    date: 'August 16, 2025',
-    day: '16',
-    month: 'AUG',
-    time: '7:00 PM – 11:00 PM',
-    location: 'SFGC Auditorium',
-    category: 'Youth',
-    description: 'An unforgettable night of praise, worship, and the Word for young adults aged 18–35.',
-  },
-  {
-    id: 3,
-    title: 'Healing & Miracles Service',
-    date: 'September 7, 2025',
-    day: '07',
-    month: 'SEP',
-    time: '10:00 AM – 2:00 PM',
-    location: 'SFGC Auditorium',
-    category: 'Special Service',
-    description: 'Come expecting a supernatural encounter. Miracles, signs, and wonders as we gather in His name.',
-  },
-]
+// const events = [
+//   {
+//     id: 1,
+//     title: 'Kingdom Dominion Conference',
+//     date: 'August 2–4, 2025',
+//     day: '02',
+//     month: 'AUG',
+//     time: '9:00 AM – 9:00 PM',
+//     location: 'SFGC Auditorium',
+//     category: 'Conference',
+//     description: 'A three-day power-packed conference to equip you with tools for kingdom impact and dominion in every sphere of life.',
+//   },
+//   {
+//     id: 2,
+//     title: 'Young Adults Night of Worship',
+//     date: 'August 16, 2025',
+//     day: '16',
+//     month: 'AUG',
+//     time: '7:00 PM – 11:00 PM',
+//     location: 'SFGC Auditorium',
+//     category: 'Youth',
+//     description: 'An unforgettable night of praise, worship, and the Word for young adults aged 18–35.',
+//   },
+//   {
+//     id: 3,
+//     title: 'Healing & Miracles Service',
+//     date: 'September 7, 2025',
+//     day: '07',
+//     month: 'SEP',
+//     time: '10:00 AM – 2:00 PM',
+//     location: 'SFGC Auditorium',
+//     category: 'Special Service',
+//     description: 'Come expecting a supernatural encounter. Miracles, signs, and wonders as we gather in His name.',
+//   },
+// ]
 
 export default function UpcomingEvents() {
+  const { events, loading, error } = useEvents()
+
   return (
     <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#0F1117' }}>
       <Container maxWidth="lg">
@@ -61,7 +65,7 @@ export default function UpcomingEvents() {
         />
 
         <Grid container spacing={3}>
-          {events.map((event) => (
+          {events.slice(0, 3).map((event) => (
             <Grid key={event.id} size={{ xs: 12, md: 4 }}>
               <Card
                 sx={{
@@ -86,14 +90,14 @@ export default function UpcomingEvents() {
                       }}
                     >
                       <Typography sx={{ fontFamily: 'var(--font-cinzel), serif', fontWeight: 900, fontSize: '1.5rem', lineHeight: 1 }}>
-                        {event.day}
+                        {formatDay(event.date)}
                       </Typography>
                       <Typography sx={{ fontFamily: 'var(--font-cinzel), serif', fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.08em' }}>
-                        {event.month}
+                        {formatMonth(event.date)}
                       </Typography>
                     </Box>
                     <Chip
-                      label={event.category}
+                      label={event.tag}
                       size="small"
                       sx={{
                         bgcolor: 'rgba(201,168,76,0.1)',
