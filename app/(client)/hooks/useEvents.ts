@@ -24,7 +24,19 @@ export function useEvents(): UseEventsResult {
         if (!response.ok) throw new Error('Failed to load events')
 
         const data = await response.json()
-        setEvents(data.events ?? [])
+
+        const sortedEvents = (data.events ?? []).sort((a: YouTubeEvent, b: YouTubeEvent) => {
+          const dateA = new Date(a.date)
+          const dateB = new Date(b.date)
+          return dateA < dateB ? -1 : dateA > dateB ? 1 : 0
+        })
+        .filter((event: YouTubeEvent) => {
+          const eventDate = new Date(event.date)
+          const now = new Date()
+          return eventDate >= now
+        })
+
+        setEvents(sortedEvents);
       } 
       catch (error) {
         setError(error instanceof Error? error.message : 'Something went wrong')
