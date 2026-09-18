@@ -2,6 +2,8 @@
 export interface YouTubeVideo {
   id: string
   title: string
+  tag: string
+  speakers: string[]
   description: string
   publishedAt: string
   duration: string

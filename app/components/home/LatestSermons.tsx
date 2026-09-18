@@ -89,7 +89,7 @@ export default function LatestSermons() {
                 <CardContent sx={{ flex: 1 }}>
                   <Box sx={{ display: 'flex', gap: 1, mb: 1.5 }}>
                     <Chip
-                      label={'Dominion Television'}
+                      label={sermon.tag || 'Dominion Television'}
                       size="small"
                       sx={{
                         bgcolor: 'rgba(201,168,76,0.1)',
@@ -114,7 +114,7 @@ export default function LatestSermons() {
                     {sermon.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.8rem' }}>
-                    Pastor Joshua Vincent &bull; {sermon.publishedAt}
+                    {sermon.speakers.join(', ')} &bull; {sermon.publishedAt}
                   </Typography>
                 </CardContent>
 

@@ -69,10 +69,7 @@ export async function fetchEvents(): Promise<YouTubeEvent[]> {
 
   return items.map((item) => {
     const videoId = item.snippet.resourceId.videoId
-    const video = videoDetails.find(
-      (video) => video.id === videoId
-    )
-
+    const video = videoDetails.find((video) => video.id === videoId)
     const description = video?.snippet.description ?? ''
     const parsed = parseDescription(description)
 

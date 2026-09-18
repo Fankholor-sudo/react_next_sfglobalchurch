@@ -13,7 +13,7 @@ import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
-import Alert from '@mui/material/Alert'
+import { Alert, AlertTitle } from '@mui/material'
 import CircularProgress from '@mui/material/CircularProgress'
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutlined'
 import MicIcon from '@mui/icons-material/Mic'
@@ -29,7 +29,7 @@ interface SermonsTabProps {
 const categories = ['All', 'Sunday', 'Friday', 'Worship Night']
 
 export default function SermonsTabs({videos, loading, error}: SermonsTabProps) {
-  const [activeCategory, setActiveCategory] = React.useState('All')
+  const [activeCategory, setActiveCategory] = React.useState('Sunday')
   const filtered: YouTubeVideo[] = activeCategory === 'All'? videos: 
     videos.filter((s) => s.title.toLowerCase().includes(activeCategory.toLowerCase()))
   const latestSermon: YouTubeVideo | null = videos[0] || null
@@ -58,10 +58,29 @@ export default function SermonsTabs({videos, loading, error}: SermonsTabProps) {
           }}
         >
           <Alert severity="error" variant="outlined">
+            <AlertTitle>Error</AlertTitle>
             We’re having trouble loading our latest sermons at the moment, but please don’t worry, 
             our team is working to get everything back up and running. 
             Please try again shortly. <br/><br/>Thank you for your patience and understanding. 
             We pray you’ll be blessed by the messages when they’re available. <br/><br/>God bless you!
+          </Alert>
+        </Container> 
+      ) : latestSermon === null ? (
+        <Container 
+          maxWidth="sm"
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '55vh'
+          }}
+        >
+          <Alert severity="info" variant="outlined">
+            <AlertTitle>Info</AlertTitle>
+            We don’t have any uploaded sermons at the moment, but we’ll have new messages available soon. 
+            Please check back again shortly and join us as we continue to grow together in God’s Word. 
+            <br/><br/>Thank you for your patience and understanding. We look forward to sharing these messages with you.
+            <br/><br/>God bless you!
           </Alert>
         </Container> 
       ) : (
@@ -105,7 +124,7 @@ export default function SermonsTabs({videos, loading, error}: SermonsTabProps) {
             </Box>
             <CardContent sx={{ p: { xs: 3, md: 5 }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <Chip
-                label="Dominion Television"
+                label={latestSermon.tag || "Dominion Television"}
                 size="small"
                 sx={{ mb: 2, alignSelf: 'flex-start', bgcolor: 'rgba(201,168,76,0.1)', color: '#C9A84C', border: '1px solid rgba(201,168,76,0.25)', fontWeight: 600 }}
               />
@@ -124,14 +143,12 @@ export default function SermonsTabs({videos, loading, error}: SermonsTabProps) {
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                 <MicIcon sx={{ fontSize: 16, color: '#C9A84C' }} />
-                <Typography variant="body2" color="text.secondary">
-                  {latestSermon?.description.split('-')[0] || '\u2014'} &bull; {latestSermon.publishedAt} &bull; {latestSermon.duration}
+                <Typography variant="body2" color="text.secondary" style={{ fontWeight: 'bold' }}>
+                  {latestSermon?.speakers.join(', ')} &bull; {latestSermon.publishedAt} &bull; {latestSermon.duration}
                 </Typography>
               </Box>
               <Typography variant="body1" color="text.secondary" sx={{ mb: 3, lineHeight: 1.8 }}>
-                True faith is born from the knowledge of God. Leave your "Egypt" behind, 
-                stand on what God has spoken, and believe both the Lord your God and His prophets.
-                When faith is rooted in revelation, it will always produce results.
+               { latestSermon.description || 'True faith is born from the knowledge of God. Leave your "Egypt" behind, stand on what God has spoken, and believe both the Lord your God and His prophets. When faith is rooted in revelation, it will always produce results.'}
               </Typography>
               <Box sx={{ display: 'flex', gap: 2 }}>
                 <Button
@@ -217,7 +234,7 @@ export default function SermonsTabs({videos, loading, error}: SermonsTabProps) {
                   <CardContent sx={{ flex: 1 }}>
                     <Box sx={{ display: 'flex', gap: 1, mb: 1.5, flexWrap: 'wrap' }}>
                       <Chip
-                        label={'Dominion Television'}
+                        label={sermon.tag || 'Dominion Television'}
                         size="small"
                         sx={{ bgcolor: 'rgba(201,168,76,0.1)', color: '#C9A84C', fontWeight: 600, fontSize: '0.68rem', border: '1px solid rgba(201,168,76,0.25)' }}
                       />
@@ -228,8 +245,18 @@ export default function SermonsTabs({videos, loading, error}: SermonsTabProps) {
                     >
                       {sermon.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.78rem' }}>
-                      {sermon.description.split('-')[0] || '\u2014'} &bull; {sermon.publishedAt}
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.78rem', fontWeight: 'bold' }}>
+                      {sermon.speakers.join(', ')} &bull; {sermon.publishedAt}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary"
+                      sx={{
+                        fontSize: '0.78rem',
+                        display: '-webkit-box',
+                        WebkitBoxOrient: 'vertical',
+                        WebkitLineClamp: 2,
+                        overflow: 'hidden',
+                      }}>
+                      {sermon.description}
                     </Typography>
                   </CardContent>
                   <CardActions sx={{ px: 2, pb: 2 }}>
