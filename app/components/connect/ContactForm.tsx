@@ -4,11 +4,11 @@ import * as React from 'react'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
-import Alert from '@mui/material/Alert'
-import MenuItem from '@mui/material/MenuItem'
+import CircularProgress from '@mui/material/CircularProgress'
 import SendIcon from '@mui/icons-material/Send'
+import MenuItem from '@mui/material/MenuItem'
+import Button from '@mui/material/Button'
+import Alert from '@mui/material/Alert'
 
 const subjects = [
   'General Enquiry',
@@ -32,19 +32,74 @@ const fieldSx = {
 }
 
 export default function ContactForm() {
-  const [subject, setSubject] = React.useState('General Enquiry')
   const [submitted, setSubmitted] = React.useState(false)
+  const [firstName, setFirstName] = React.useState('')
+  const [lastName, setLastName] = React.useState('')
+  const [email, setEmail] = React.useState('')
+  const [phone, setPhone] = React.useState('')
+  const [subject, setSubject] = React.useState('General Enquiry')
+  const [message, setMessage] = React.useState('')
+  const [error, setError] = React.useState(false)
+  const [loading, setLoading] = React.useState(false)
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    const payload = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      subject,
+      message
+    }
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    .then(async (response) => {
+      const data = await response.json()
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong')
+      }
+      setSubmitted(true)
+      handleReset()
+    })
+    .catch ((error) => {
+      setError(true)
+      console.error('Error sending contact form:', error)
+    })
+    .finally(() => { setLoading(false) })
   }
 
-  if (submitted) {
-    return (
-      <Alert
+  const handleReset = () => {
+    setFirstName('')
+    setLastName('')
+    setEmail('')
+    setPhone('')
+    setSubject('General Enquiry')
+    setMessage('')
+  }
+
+  React.useEffect(() => {
+    if (submitted || error) {
+      const timer = setTimeout(() => {
+        setSubmitted(false)
+        setError(false)
+      }, 50000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [submitted, error])
+
+  return (
+    <Box component="form" onSubmit={handleSubmit}>
+      { submitted && <Alert
         severity="success"
         sx={{
+          mb: 5,
           bgcolor: 'rgba(201,168,76,0.1)',
           color: '#C9A84C',
           border: '1px solid rgba(201,168,76,0.3)',
@@ -52,24 +107,64 @@ export default function ContactForm() {
         }}
       >
         Thank you for reaching out! We will get back to you within 24–48 hours. God bless you.
-      </Alert>
-    )
-  }
-
-  return (
-    <Box component="form" onSubmit={handleSubmit}>
+      </Alert>}
+      { error && <Alert
+        severity="error"
+        sx={{
+          mb: 5,
+          bgcolor: 'rgba(211,47,47,0.1)',
+          color: '#FF6B6B',
+          border: '1px solid rgba(211,47,47,0.3)',
+          '& .MuiAlert-icon': {
+            color: '#FF6B6B',
+          },
+        }}
+      >
+        We’re sorry, but we couldn’t send your message. Please try again later. If the problem persists, please contact us directly.
+      </Alert>}
       <Grid container spacing={2.5}>
         <Grid size={{ xs: 12, sm: 6 }}>
-          <TextField fullWidth label="First Name" required variant="outlined" sx={fieldSx} />
+          <TextField
+            fullWidth
+            label="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+            variant="outlined"
+            sx={fieldSx}
+          />
         </Grid>
         <Grid size={{ xs: 12, sm: 6 }}>
-          <TextField fullWidth label="Last Name" required variant="outlined" sx={fieldSx} />
+          <TextField
+            fullWidth
+            label="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+            variant="outlined"
+            sx={fieldSx}
+          />
         </Grid>
         <Grid size={{ xs: 12, sm: 6 }}>
-          <TextField fullWidth label="Email Address" type="email" required variant="outlined" sx={fieldSx} />
+          <TextField
+            fullWidth
+            label="Email Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            required variant="outlined"
+            sx={fieldSx}
+          />
         </Grid>
         <Grid size={{ xs: 12, sm: 6 }}>
-          <TextField fullWidth label="Phone Number" variant="outlined" sx={fieldSx} />
+          <TextField
+            fullWidth
+            label="Phone Number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            variant="outlined"
+            sx={fieldSx} 
+          />
         </Grid>
         <Grid size={{ xs: 12 }}>
           <TextField
@@ -100,6 +195,8 @@ export default function ContactForm() {
           <TextField
             fullWidth
             label="Your Message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
             multiline
             rows={5}
             required
@@ -113,10 +210,11 @@ export default function ContactForm() {
             variant="contained"
             color="primary"
             size="large"
-            endIcon={<SendIcon />}
-            sx={{ fontWeight: 700, px: 5 }}
+            endIcon={loading ? null: <SendIcon />}
+            sx={{ fontWeight: 700, px: 5, minWidth: 235 }}
+            disabled={loading}
           >
-            Send Message
+           { loading ? <CircularProgress size={26} color='inherit' /> : 'Send Message' }
           </Button>
         </Grid>
       </Grid>

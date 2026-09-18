@@ -1,44 +1,11 @@
-import { formatDate } from './utils'
-import { fetchVideoDurations } from './fetchVideoDuration'
+import { formatDate } from '@/app/helpers/utils'
+import { fetchVideoDurations } from '@/app/helpers/fetchVideoDuration'
+import { YouTubeVideo, YouTubePlaylistItem } from '@/app/utility/types'
+import { parseDescription } from '@/app/helpers/parseDescription'
 
 const YOUTUBE_API_URL = process.env.YOUTUBE_API_URL
 const CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID
 const API_KEY = process.env.YOUTUBE_API_KEY
-
-export interface YouTubeVideo {
-  id: string
-  title: string
-  description: string
-  publishedAt: string
-  duration: string
-  thumbnail: string
-  url: string
-}
-
-interface YouTubePlaylistItem {
-  snippet: {
-    title: string
-    description: string
-    publishedAt: string
-    thumbnails: {
-      maxres?: {
-        url: string
-      }
-      standard?: {
-        url: string
-      }
-      high?: {
-        url: string
-      }
-      medium?: {
-        url: string
-      }
-    }
-    resourceId: {
-      videoId: string
-    }
-  }
-}
 
 interface YouTubePlaylistResponse {
   items: YouTubePlaylistItem[]
@@ -99,10 +66,15 @@ export async function getLatestYouTubeVideos(
   return videosData.items.map((item) => {
     const videoId = item.snippet.resourceId.videoId
     let publishedAt = formatDate(new Date(item.snippet.publishedAt))
+    const description = item.snippet.description ?? ''
+    const parsed = parseDescription(description)
+
     return {
       id: videoId,
       title: item.snippet.title,
-      description: item.snippet.description,
+      description: parsed.description,
+      speakers: parsed.speakers,
+      tag: parsed.tag,
       publishedAt: publishedAt,
       duration: durations.get(videoId) || '00:00',
       thumbnail:

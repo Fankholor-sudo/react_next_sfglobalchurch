@@ -3,15 +3,16 @@
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
+import Alert from '@mui/material/Alert'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
-import MenuItem from '@mui/material/MenuItem'
-import Alert from '@mui/material/Alert'
-import Divider from '@mui/material/Divider'
+import CircularProgress from '@mui/material/CircularProgress'
 import FavoriteIcon from '@mui/icons-material/Favorite'
+import MenuItem from '@mui/material/MenuItem'
+import Divider from '@mui/material/Divider'
 
 const presetAmounts = ['50', '100', '200', '500', '1000']
 
@@ -40,7 +41,14 @@ const fieldSx = {
 export default function GiveForm() {
   const [amount, setAmount] = React.useState<string>('100')
   const [customAmount, setCustomAmount] = React.useState('')
+  const [givingType, setGivingType] = React.useState('Tithes')
+  const [firstName, setFirstName] = React.useState('')
+  const [lastName, setLastName] = React.useState('')
+  const [email, setEmail] = React.useState('')
+  const [phone, setPhone] = React.useState('')
   const [submitted, setSubmitted] = React.useState(false)
+  const [error, setError] = React.useState(false)
+  const [loading, setLoading] = React.useState(false)
 
   const handlePreset = (_: React.MouseEvent<HTMLElement>, newValue: string) => {
     if (newValue !== null) {
@@ -49,10 +57,58 @@ export default function GiveForm() {
     }
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    const payload = {
+      givingType,
+      amount: customAmount || amount,
+      firstName,
+      lastName,
+      email,
+      phone,
+    }
+
+    fetch('/api/give', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    .then(async (response) => {
+      const data = await response.json()
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong')
+      }
+      setSubmitted(true)
+      handleReset()
+    })
+    .catch((error) => {
+      setError(true)
+      console.error('Give form error:', error)
+    })
+    .finally(() => { setLoading(false) })
   }
+
+  const handleReset = () => {
+    setAmount('100')
+    setCustomAmount('')
+    setGivingType('Tithes')
+    setFirstName('')
+    setLastName('')
+    setEmail('')
+    setPhone('')
+  }
+
+  React.useEffect(() => {
+    if (submitted || error) {
+      const timer = setTimeout(() => {
+        setSubmitted(false)
+        setError(false)
+      }, 50000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [submitted, error])
 
   if (submitted) {
     return (
@@ -76,6 +132,20 @@ export default function GiveForm() {
 
   return (
     <Box component="form" onSubmit={handleSubmit}>
+      { error && <Alert
+        severity="error"
+        sx={{
+          mb: 5,
+          bgcolor: 'rgba(211,47,47,0.1)',
+          color: '#FF6B6B',
+          border: '1px solid rgba(211,47,47,0.3)',
+          '& .MuiAlert-icon': {
+            color: '#FF6B6B',
+          },
+        }}
+      >
+        We’re so sorry, but we couldn’t process your request. Please try again later. If the problem persists, please contact us directly.
+      </Alert>}
       {/* Giving Type */}
       <Typography sx={{ color: '#C9A84C', fontWeight: 700, fontSize: '0.72rem', letterSpacing: '0.15em', textTransform: 'uppercase', mb: 1.5 }}>
         Giving Type
@@ -83,7 +153,8 @@ export default function GiveForm() {
       <TextField
         fullWidth
         select
-        defaultValue="Tithes"
+        value={givingType}
+        onChange={(e) => setGivingType(e.target.value)}
         variant="outlined"
         sx={{ mb: 3, ...fieldSx }}
         slotProps={{
@@ -166,26 +237,50 @@ export default function GiveForm() {
       <Grid container spacing={2.5}>
         <Grid size={{ xs: 12, sm: 6 }}>
           <TextField
-            fullWidth label="First Name" required variant="outlined"
-            sx={fieldSx} slotProps={fieldSlotProps}
+            fullWidth
+            label="First Name"
+            required
+            variant="outlined"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            sx={fieldSx}
+            slotProps={fieldSlotProps}
           />
         </Grid>
         <Grid size={{ xs: 12, sm: 6 }}>
           <TextField
-            fullWidth label="Last Name" required variant="outlined"
-            sx={fieldSx} slotProps={fieldSlotProps}
+            fullWidth
+            label="Last Name"
+            required
+            variant="outlined"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            sx={fieldSx}
+            slotProps={fieldSlotProps}
           />
         </Grid>
         <Grid size={{ xs: 12 }}>
           <TextField
-            fullWidth label="Email Address" type="email" required variant="outlined"
-            sx={fieldSx} slotProps={fieldSlotProps}
+            fullWidth
+            label="Email Address"
+            type="email"
+            required
+            variant="outlined"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            sx={fieldSx}
+            slotProps={fieldSlotProps}
           />
         </Grid>
         <Grid size={{ xs: 12 }}>
           <TextField
-            fullWidth label="Phone Number" variant="outlined"
-            sx={fieldSx} slotProps={fieldSlotProps}
+            fullWidth
+            label="Phone Number"
+            variant="outlined"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            sx={fieldSx}
+            slotProps={fieldSlotProps}
           />
         </Grid>
         <Grid size={{ xs: 12 }}>
@@ -199,7 +294,9 @@ export default function GiveForm() {
               '& .MuiAlert-icon': { color: '#C9A84C' },
             }}
           >
-            Payment processing details will be confirmed by our finance team. You will receive an email with banking details and a reference number.
+            Payment processing details will be confirmed by our finance team. 
+            Your submission will be reviewed, and you can use the banking details 
+            provided on this page to complete your payment.
           </Alert>
         </Grid>
         <Grid size={{ xs: 12 }}>
@@ -209,10 +306,11 @@ export default function GiveForm() {
             color="primary"
             size="large"
             fullWidth
-            startIcon={<FavoriteIcon />}
+            startIcon={loading ? null: <FavoriteIcon />}
             sx={{ fontWeight: 700, py: 1.8, fontSize: '1rem' }}
+            disabled={loading}
           >
-            Give Now — R {customAmount || amount || '0'}
+            { loading ? <CircularProgress color='inherit' size={20} /> : `GIVE — R ${customAmount || amount || '0'}` }
           </Button>
         </Grid>
       </Grid>
