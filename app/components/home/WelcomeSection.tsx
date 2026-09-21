@@ -21,28 +21,20 @@ export default function WelcomeSection() {
                 position: 'relative',
                 borderRadius: 2,
                 overflow: 'hidden',
-                '&::after': {
-                  content: '""',
-                  position: 'absolute',
-                  bottom: -16,
-                  right: -16,
-                  width: '70%',
-                  height: '70%',
-                  border: '3px solid #C9A84C',
-                  borderRadius: 2,
-                  zIndex: 0,
-                },
-              }}
-            >
-              <Box sx={{ position: 'relative', zIndex: 1, borderRadius: 2, overflow: 'hidden', aspectRatio: '4/4' }}>
-                <Image
-                  src="/images/church.jpg"
-                  alt="Spirit Fountain Global Church community"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  loading="eager"
-                />
-              </Box>
+                aspectRatio: '4/5',
+                boxShadow: `
+                  0 20px 40px rgba(0, 0, 0, 0.45),
+                  0 8px 16px rgba(0, 0, 0, 0.3)
+                `,
+              }}>
+              <Image
+                src="/images/church.jpg"
+                alt="Spirit Fountain Global Church community"
+                sizes="(max-width: 900px) 100vw, 50vw"
+                style={{ objectFit: 'cover' }}
+                loading="eager"
+                fill
+              />
             </Box>
           </Grid>
 
