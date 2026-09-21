@@ -66,7 +66,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
             <Image
-              src="/images/no-bg-logo.png"
+              src="https://zvve3t2t9mgsxztu.public.blob.vercel-storage.com/no-bg-logo.png"
               alt="Spirit Fountain Global Church Logo"
               width={48}
               height={48}
@@ -179,7 +179,7 @@ export default function Navbar() {
         >
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }} onClick={() => setDrawerOpen(false)}>
             <Image
-              src="/images/no-bg-logo.png"
+              src="https://zvve3t2t9mgsxztu.public.blob.vercel-storage.com/no-bg-logo.png"
               alt="Spirit Fountain Global Church Logo"
               width={40}
               height={40}

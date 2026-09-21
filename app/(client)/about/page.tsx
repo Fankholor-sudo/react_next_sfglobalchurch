@@ -114,12 +114,19 @@ export default function AboutPage() {
         <Container maxWidth="lg">
           <Grid container spacing={8} sx={{ alignItems: 'center' }}>
             <Grid size={{ xs: 12, md: 6 }}>
-              <Box sx={{ position: 'relative', borderRadius: 2, overflow: 'hidden', aspectRatio: '4/3' }}>
+              <Box
+                sx={{
+                  position: 'relative',
+                  borderRadius: 2,
+                  overflow: 'hidden',
+                  aspectRatio: '4/3.5',
+                }}>
                 <Image
                   src="/images/about.jpg"
                   alt="Spirit Fountain Global Church community"
-                  fill
+                  sizes="(max-width: 900px) 100vw, 50vw"
                   style={{ objectFit: 'cover' }}
+                  fill
                 />
               </Box>
             </Grid>
