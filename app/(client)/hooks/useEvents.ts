@@ -31,9 +31,10 @@ export function useEvents(): UseEventsResult {
           return dateA < dateB ? -1 : dateA > dateB ? 1 : 0
         })
         .filter((event: YouTubeEvent) => {
-          const eventDate = new Date(event.date)
+          var eventDate = new Date(event.date)
+          eventDate.setHours(23, 59, 59, 999)
           const now = new Date()
-          return eventDate > now
+          return eventDate >= now
         })
 
         setEvents(sortedEvents);
