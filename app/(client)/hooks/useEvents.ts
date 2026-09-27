@@ -33,7 +33,7 @@ export function useEvents(): UseEventsResult {
         .filter((event: YouTubeEvent) => {
           const eventDate = new Date(event.date)
           const now = new Date()
-          return eventDate >= now
+          return eventDate > now
         })
 
         setEvents(sortedEvents);
