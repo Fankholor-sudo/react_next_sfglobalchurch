@@ -84,7 +84,6 @@ export default function GiveForm() {
     })
     .catch((error) => {
       setError(true)
-      console.error('Give form error:', error)
     })
     .finally(() => { setLoading(false) })
   }

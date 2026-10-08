@@ -1,11 +1,11 @@
 import { parseDescription } from '@/app/helpers/parseDescription'
 import { YouTubeEvent, PlaylistItem, VideoDetails } from '@/app/utility/types'
-// import { revalidateTag } from 'next/cache'
+import { revalidateTag } from 'next/cache'
 
 
 
 export async function fetchEvents(): Promise<YouTubeEvent[]> {
-  // revalidateTag('events', { expire: 0 }) // Revalidates manually
+  revalidateTag('events', { expire: 0 }) // Revalidates manually
   const apiKey = process.env.YOUTUBE_API_KEY
   const playlistId = process.env.YOUTUBE_EVENTS_PLAYLIST_ID
 
