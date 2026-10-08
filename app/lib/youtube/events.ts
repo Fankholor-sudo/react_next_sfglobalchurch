@@ -1,7 +1,11 @@
 import { parseDescription } from '@/app/helpers/parseDescription'
 import { YouTubeEvent, PlaylistItem, VideoDetails } from '@/app/utility/types'
+// import { revalidateTag } from 'next/cache'
+
+
 
 export async function fetchEvents(): Promise<YouTubeEvent[]> {
+  // revalidateTag('events', { expire: 0 }) // Revalidates manually
   const apiKey = process.env.YOUTUBE_API_KEY
   const playlistId = process.env.YOUTUBE_EVENTS_PLAYLIST_ID
 
@@ -54,9 +58,10 @@ export async function fetchEvents(): Promise<YouTubeEvent[]> {
         key: apiKey,
       }),
     {
-      next: {
-        revalidate: 60,//3600,
-      },
+      next: { 
+        revalidate: 60,   // 3600 | Revalidates automatically every 60 seconds in the background
+        tags: ['events']  // Allows manual purging via revalidateTag('events') on-demand
+      }
     }
   )
 
@@ -77,8 +82,8 @@ export async function fetchEvents(): Promise<YouTubeEvent[]> {
       id: videoId,
       title: item.snippet.title,
       thumbnail:
-        item.snippet.thumbnails.high?.url ??
-        item.snippet.thumbnails.medium?.url ??
+        item.snippet.thumbnails.maxres?.url ??
+        item.snippet.thumbnails.standard?.url ??
         '',
       url: `https://www.youtube.com/watch?v=${videoId}`,
       publishedAt: item.snippet.publishedAt,
