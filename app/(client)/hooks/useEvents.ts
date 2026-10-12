@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import type { YouTubeEvent } from '@/app/utility/types'
+import { createDate } from '@/app/helpers/utils'
 
 interface UseEventsResult {
   events: YouTubeEvent[]
@@ -25,16 +26,11 @@ export function useEvents(): UseEventsResult {
 
         const data = await response.json()
 
-        const sortedEvents = (data.events ?? []).sort((a: YouTubeEvent, b: YouTubeEvent) => {
-          const dateA = new Date(a.date)
-          const dateB = new Date(b.date)
-          return dateA < dateB ? -1 : dateA > dateB ? 1 : 0
+        const sortedEvents = [...(data.events ?? [])].sort((a: YouTubeEvent, b: YouTubeEvent) => {
+          return createDate(a.date) - createDate(b.date)
         })
         .filter((event: YouTubeEvent) => {
-          var eventDate = new Date(event.date)
-          eventDate.setHours(23, 59, 59, 999)
-          const now = new Date()
-          return eventDate >= now
+          return createDate(event.date) >= Date.now()
         })
 
         setEvents(sortedEvents);

@@ -51,6 +51,7 @@ export async function getLatestYouTubeVideos(
   const videosResponse = await fetch(videosUrl.toString(), {
     next: {
       revalidate: 3600,
+      tags: ['sermons'], // Allows manual purging via revalidateTag('sermons') on-demand
     },
   })
 
@@ -79,9 +80,7 @@ export async function getLatestYouTubeVideos(
       duration: durations.get(videoId) || '00:00',
       thumbnail:
         item.snippet.thumbnails.maxres?.url ??
-        item.snippet.thumbnails.standard?.url ??
-        item.snippet.thumbnails.high?.url ??
-        item.snippet.thumbnails.medium?.url ?? '',
+        item.snippet.thumbnails.standard?.url ?? '',
       url: `https://www.youtube.com/watch?v=${videoId}`,
     }
   })

@@ -23,12 +23,6 @@ export interface YouTubePlaylistItem {
       standard?: {
         url: string
       }
-      high?: {
-        url: string
-      }
-      medium?: {
-        url: string
-      }
     }
     resourceId: {
       videoId: string
@@ -58,10 +52,10 @@ export interface PlaylistItem {
     publishedAt: string
     title: string
     thumbnails: {
-      high?: {
+      maxres?: {
         url: string
-      }
-      medium?: {
+      },
+      standard?: {
         url: string
       }
     }
