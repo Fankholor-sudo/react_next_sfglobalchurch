@@ -21,7 +21,7 @@ export const leadership = [
     name: 'Pastor Makhubela',
     title: 'Co-Pastor & Teaching Pastor',
     image: '/images/leaders/Ps_Makhubela.png',
-    bio: "Committed to the call of ministry: to preach Christ, make disciples, equip believers, and serve God's people with humility.",
+    bio: "Pastor Makhubela is Committed to the call of ministry: to preach Christ, make disciples, equip believers, and serve God's people with humility.",
   },
 ]
 
