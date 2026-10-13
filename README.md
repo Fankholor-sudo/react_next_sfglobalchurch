@@ -1,3 +1,4 @@
+
 # Spirit Fountain Global Church
 
 ## About the Project
@@ -5,6 +6,8 @@
 Spirit Fountain Global Church is a modern, responsive church website designed to share the church's mission, connect with the community, and make church information easily accessible to visitors and members.
 
 The website features a clean, elegant design with dark backgrounds and gold accents, reflecting the church's identity and creating a welcoming online experience.
+## [Preview](https://sfglobalchurch.vercel.app/)
+<img width="1512" height="827" alt="Screenshot 2026-10-13 at 11 28 25" src="https://github.com/user-attachments/assets/d566323a-6fad-4b8c-b33f-7d9a2c28912d" />
 
 ## Features
 
