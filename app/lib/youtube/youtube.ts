@@ -31,7 +31,7 @@ export async function getLatestYouTubeVideos(
 
   const channelResponse = await fetch(channelUrl.toString(), {
     next: {
-      revalidate: 3600,
+      revalidate: 60,
     },
   })
 
@@ -50,7 +50,7 @@ export async function getLatestYouTubeVideos(
 
   const videosResponse = await fetch(videosUrl.toString(), {
     next: {
-      revalidate: 3600,
+      revalidate: 60,
       tags: ['sermons'], // Allows manual purging via revalidateTag('sermons') on-demand
     },
   })
